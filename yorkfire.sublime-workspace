@@ -1,0 +1,1409 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"isPin",
+				"isPinned"
+			],
+			[
+				"list",
+				"list-n	list-style-type: none;"
+			],
+			[
+				"show",
+				"showned"
+			],
+			[
+				"cont",
+				"content"
+			],
+			[
+				"unsele",
+				"unselectCard"
+			],
+			[
+				"sys",
+				"system.js"
+			],
+			[
+				"jsp",
+				"jspm_packages/"
+			],
+			[
+				"menu",
+				"menu	<menu>"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"gfx",
+				"gfx-card.html"
+			],
+			[
+				"td",
+				"td	Tag"
+			],
+			[
+				"base",
+				"base-action-window.html"
+			],
+			[
+				"emplo",
+				"employee	base-window.html"
+			],
+			[
+				"isMoving",
+				"isMovingV()	base-card.html"
+			],
+			[
+				"employee-reveal",
+				"employee-reveal-left-card.html"
+			],
+			[
+				"dayof",
+				"dayoff-window.html"
+			],
+			[
+				"just",
+				"justified"
+			],
+			[
+				"employe",
+				"employees"
+			],
+			[
+				"cre",
+				"created()	polymer.js"
+			],
+			[
+				"ready",
+				"ready()	polymer.js"
+			],
+			[
+				"read",
+				"ready()	polymer.js"
+			],
+			[
+				"deta",
+				"detached(element)	webcomponents.js"
+			],
+			[
+				"table",
+				"table"
+			],
+			[
+				"paper-dropdown-menu",
+				"paper-dropdown-menu.html"
+			],
+			[
+				"paper-",
+				"paper-input-decorator.html"
+			],
+			[
+				"paper-drop",
+				"paper-dropdown-menu/"
+			],
+			[
+				"link",
+				"link	link - stylesheet"
+			],
+			[
+				"ver",
+				"vertical"
+			],
+			[
+				"canc",
+				"cancelled"
+			],
+			[
+				"refre",
+				"refresh()	iscroll-probe.js"
+			],
+			[
+				"impo",
+				"important"
+			],
+			[
+				"baco",
+				"background-color"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"transla",
+				"translateY(25"
+			],
+			[
+				"setTime",
+				"setTimeout(callback)	jspec.js"
+			],
+			[
+				"_off",
+				"_offsetY"
+			],
+			[
+				"_ALIGN",
+				"_ALIGN_HORIZONTAL"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"tab_",
+				"tab_position"
+			],
+			[
+				"dire",
+				"directionY"
+			],
+			[
+				"start_time_",
+				"start_time_yesterday"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"spac",
+				"white-space"
+			],
+			[
+				"empl",
+				"employee_panel"
+			],
+			[
+				"emp",
+				"employee_panel"
+			],
+			[
+				"scro",
+				"scrollLeft"
+			],
+			[
+				"off",
+				"offsetLeft"
+			],
+			[
+				"1C",
+				"1CDC"
+			],
+			[
+				"scr",
+				"scroll_area"
+			],
+			[
+				"clie",
+				"clientWidth"
+			],
+			[
+				"timel",
+				"timeline-card"
+			],
+			[
+				"time",
+				"timeline"
+			],
+			[
+				"con",
+				"console.	console.log()"
+			],
+			[
+				"brow",
+				"browser"
+			],
+			[
+				"sc",
+				"script	HTML/Element"
+			],
+			[
+				"bower",
+				"bower_components/"
+			],
+			[
+				"browser",
+				"browserify"
+			],
+			[
+				"ht",
+				"html"
+			],
+			[
+				"ele",
+				"element"
+			],
+			[
+				"tit",
+				"title"
+			],
+			[
+				"typ",
+				"typeof"
+			],
+			[
+				"inde",
+				"indexOf	jsArray"
+			],
+			[
+				"side_bar_re",
+				"side_bar_rename"
+			],
+			[
+				"Array",
+				"_.isArray	_object"
+			],
+			[
+				"isAr",
+				"_.isArray"
+			],
+			[
+				"cocos2",
+				"cocos2d-js/	Dir"
+			],
+			[
+				"ava",
+				"avatar"
+			],
+			[
+				"av",
+				"avatar"
+			],
+			[
+				"updat",
+				"update"
+			],
+			[
+				"log",
+				"console.log"
+			],
+			[
+				"br",
+				"browserify"
+			],
+			[
+				"a",
+				"assets/imgs/avatar	png"
+			],
+			[
+				"ex",
+				"exit"
+			],
+			[
+				"te",
+				"FlxText"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "rem",
+		"selected_items":
+		[
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"tag",
+				"Selection: Expand to Tag"
+			],
+			[
+				"ali",
+				"AlignTab"
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"back",
+				"AutoBackups: Open file backup"
+			],
+			[
+				"print",
+				"Print Selection"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"table",
+				"Snippet: <table>"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"swap",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"swa",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"backup",
+				"AutoBackups: Open file backup"
+			],
+			[
+				"low",
+				"Convert Case: Lower Case"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"pack",
+				"Package Control: Discover Packages"
+			],
+			[
+				"packa",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"previ",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"prev",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"previe",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"markd",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"ex",
+				"Markmon exit"
+			],
+			[
+				"laun",
+				"Markmon launch"
+			],
+			[
+				"exit",
+				"Markmon exit"
+			],
+			[
+				"markm",
+				"Markmon launch"
+			],
+			[
+				"marmo",
+				"Markmon exit"
+			],
+			[
+				"mamon",
+				"Markmon exit"
+			],
+			[
+				"markmon",
+				"Markmon launch"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"we",
+				"Web Inspector"
+			],
+			[
+				"web",
+				"Web Inspector"
+			],
+			[
+				"inspec",
+				"Web Inspector"
+			],
+			[
+				"insp",
+				"Web Inspector"
+			],
+			[
+				"inspe",
+				"Web Inspector"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"quo",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"open",
+				"File Navigator: Open"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"keys",
+				"FindKeyConflicts: (Direct) Conflicts to Quick Panel"
+			],
+			[
+				"key",
+				"FindKeyConflicts: (Direct) Conflicts to Buffer"
+			],
+			[
+				"pick",
+				"Color Picker"
+			],
+			[
+				"pi",
+				"Color Picker"
+			],
+			[
+				"swapq",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"quote",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"pic",
+				"Color Picker"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"g",
+				"Gulp"
+			],
+			[
+				"gulp",
+				"Gulp"
+			],
+			[
+				"gu",
+				"Gulp"
+			],
+			[
+				"move",
+				"Quick File Move: Move Current File"
+			],
+			[
+				"rena",
+				"ANF: Rename File"
+			],
+			[
+				"histo",
+				"Local History: Browse"
+			],
+			[
+				"gut",
+				"View: Toggle Gutter"
+			],
+			[
+				"gutt",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"gitadd",
+				"Git: Quick Add"
+			],
+			[
+				"commi",
+				"Git (SideBarGit): Commit All…"
+			],
+			[
+				"gitg",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"undo",
+				"FullUndo: Full undo"
+			],
+			[
+				"side",
+				"Side Bar: Refresh"
+			],
+			[
+				"reveal",
+				"File: Reveal"
+			],
+			[
+				"edit proje",
+				"Project: Edit Project"
+			],
+			[
+				"file",
+				"File Navigator: Open"
+			],
+			[
+				"rename",
+				"Tag: Rename"
+			],
+			[
+				"update",
+				"Keymap Redefiner: Update Keymaps"
+			],
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"emmet",
+				"Emmet: Balance (inward)"
+			],
+			[
+				"lorem",
+				"Snippet: lorem - One sentence"
+			],
+			[
+				"lo",
+				"Snippet: lorem - Short paragraph"
+			],
+			[
+				"command",
+				"Preferences: Commands - Default"
+			],
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"lint",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"intel",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"shell",
+				"SublimeREPL: Shell"
+			],
+			[
+				"make",
+				"Make file executable"
+			],
+			[
+				"exec",
+				"Make file executable"
+			],
+			[
+				"glue",
+				"Glue - Launch"
+			],
+			[
+				"delete",
+				"ANF: Delete File"
+			],
+			[
+				"shel",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"repl",
+				"SublimeREPL: Shell"
+			],
+			[
+				"termin",
+				"Open in terminal"
+			],
+			[
+				"nav",
+				"File Navigator: Open"
+			],
+			[
+				"brows",
+				"Browse Mode..."
+			],
+			[
+				"run",
+				"Run"
+			],
+			[
+				"theme",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"csub",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"cosub",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"colors",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"upda",
+				"Keymap Redefiner: Update Keymaps"
+			],
+			[
+				"node",
+				"SublimeREPL: Node"
+			],
+			[
+				"col",
+				"Color Picker"
+			],
+			[
+				"short",
+				"TabsShortcuts: Key Bindings – Default"
+			],
+			[
+				"navi",
+				"File Navigator: Open"
+			],
+			[
+				"push",
+				"Git: Push Current Branch"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Quick Add"
+			],
+			[
+				"gul",
+				"Gulp"
+			],
+			[
+				"cake",
+				"Coffee: Run Cake Task"
+			],
+			[
+				"sublimegit",
+				"SublimeGit: Add License"
+			],
+			[
+				"remote",
+				"Git (SideBarGit): Remote add…"
+			],
+			[
+				"coff",
+				"Coffee: Run Script / Selection"
+			],
+			[
+				"coffee",
+				"Coffee: Run Script / Selection"
+			],
+			[
+				"npmi",
+				"npm: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippets: Open snippet"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"comm",
+				"DocBlockr: Reparse comment block"
+			],
+			[
+				"comme",
+				"Toggle Comment"
+			],
+			[
+				"doc",
+				"DocBlockr: Decorate line comment"
+			],
+			[
+				"projec",
+				"Project: Edit"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"git",
+				"GitStatus: Changed files"
+			],
+			[
+				"n",
+				"npm: Search Packages"
+			],
+			[
+				"npm",
+				"npm: Install Package"
+			],
+			[
+				"gitp",
+				"Git: Push"
+			],
+			[
+				"igno",
+				"Git: Update Project Ignored Files"
+			],
+			[
+				"gitpu",
+				"Git: Push"
+			],
+			[
+				"gitc",
+				"Git: Commit"
+			],
+			[
+				"proj",
+				"Project Manager"
+			],
+			[
+				"haxe",
+				"Haxe: Choose Build Target"
+			],
+			[
+				"hb",
+				"Haxe: Run build"
+			],
+			[
+				"syntaxxm",
+				"Set Syntax: XML"
+			],
+			[
+				"build",
+				"Set Syntax: NME Build File"
+			],
+			[
+				"dash",
+				"DashDoc: invoke Dash with selected word"
+			],
+			[
+				"hax",
+				"Haxe: New Class"
+			]
+		],
+		"width": 1216.0
+	},
+	"console":
+	{
+		"height": 270.0,
+		"history":
+		[
+			"coffee",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Volumes/hd/sources/yorkfire"
+	],
+	"file_history":
+	[
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/panels/slide-title-panel.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/panels/right-slide-panel.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/date-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/shifts/shift-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/panels/left-slide-panel.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/timeline-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/app.html",
+		"/Users/alain/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Volumes/hd/sources/lsi/garda/GSKED/Gulpfile.js",
+		"/Users/alain/sources/lsi/garda/gsked/windows/base-window.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-small-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/base-window.html",
+		"/Users/alain/sources/lsi/garda/gsked/menus/menu-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/employees/employee-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/base-action-window.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/index.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/es6-module-loader.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/employees/employee-select-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/jspm_packages/traceur.js.map",
+		"/Volumes/hd/sources/lsi/garda/GSKED/config.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/traceur.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/traceur-runtime.src.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/public/index.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/build.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/config.map",
+		"/Volumes/hd/sources/lsi/garda/GSKED/config",
+		"/Volumes/hd/sources/lsi/garda/GSKED/bower_components/superagent/superagent.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/bower_components/superagent/.bower.json",
+		"/Volumes/hd/sources/lsi/garda/GSKED/bower_components/superagent/package.json",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/system.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/build",
+		"/Volumes/hd/sources/lsi/garda/GSKED/index.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/system.src.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/traceur.src.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/es6-module-loader.src.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/.jshintrc",
+		"/Volumes/hd/sources/lsi/garda/GSKED/cards/select-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/cards/reveal-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/cards/base-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-small-reveal-right-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-select-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-reveal-up-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-reveal-right-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-reveal-left-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/employees/employee-reveal-down-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/lib/pointrect.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/menus/menu-item-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/menus/menu-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/app-globals.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/shifts/shift-select-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/move-window.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/late-window.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/gfx-window.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/early-window.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/windows/dayoff-window.html",
+		"/Users/alain/sublime_backups/2015-03-11/Volumes/hd/sources/lsi/garda/GSKED/ui/app-globals_145732.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/utils/toast-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/utils/time-picker.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/utils/slide-panel.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/utils/right-slide-panel.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/utils/left-slide-panel.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/top-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/scroll-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/row-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/position-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/ui/break-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/_public/index.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/package.json",
+		"/Users/alain/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Volumes/hd/sources/lsi/garda/GSKED/jspm_packages/.loaderversions",
+		"/Users/alain/Library/Caches/Cleanup At Startup/Transmit/6857EDF0-1D6E-433D-BA22-7657A99E4A31/index.js",
+		"/Users/alain/Library/Caches/Cleanup At Startup/Transmit/41CBF6C2-1C34-4929-8C43-B683C47495C1/index.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-jspm/package.json",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-jspm/index.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-jspm/README.md",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-babel/readme.md",
+		"/Users/alain/sources/lsi/garda/gsked/ui/app.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/public/index.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-watch/node_modules/path2glob/node_modules/glob/node_modules/minimatch/node_modules/sigmund/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-watch/node_modules/path2glob/node_modules/glob/node_modules/inflight/node_modules/wrappy/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/chalk/node_modules/.bin/supports-color",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-load-plugins/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-load-plugins/node_modules/multimatch/node_modules/minimatch/node_modules/sigmund/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-watch/node_modules/path2glob/node_modules/glob/node_modules/minimatch/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp/node_modules/liftoff/lib/build_config_name.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-load-plugins/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-load-plugins/node_modules/multimatch/node_modules/minimatch/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-watch/node_modules/path2glob/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-vulcanize/node_modules/vulcanize/node_modules/uglify-js/node_modules/source-map/lib/source-map/binary-search.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-load-plugins/node_modules/multimatch/node_modules/minimatch/node_modules/lru-cache/test/basic.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-autoprefixer/node_modules/autoprefixer-core/node_modules/postcss/node_modules/source-map/lib/source-map/binary-search.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/vinyl/lib/inspectStream.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/vinyl/lib/cloneBuffer.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/dateformat/bin/cli.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/node_modules/readable-stream/node_modules/isarray/component.json",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/lib/combine.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/lib/colors.js",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash.keys/node_modules/lodash.isobject/node_modules/lodash._objecttypes/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash.keys/node_modules/lodash._shimkeys/node_modules/lodash._objecttypes/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/node_modules/readable-stream/node_modules/string_decoder/LICENSE",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/node_modules/readable-stream/node_modules/inherits/LICENSE",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-shell/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash.templatesettings/node_modules/lodash.escape/node_modules/lodash._basetostring/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/LICENSE",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash.defaults/node_modules/lodash._objecttypes/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/engine.io-parser/node_modules/base64-arraybuffer/LICENSE-MIT",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash.keys/node_modules/lodash.isobject/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-plumber/node_modules/gulp-util/node_modules/multipipe/node_modules/duplexer2/node_modules/readable-stream/LICENSE",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/browser-sync/node_modules/socket.io/node_modules/engine.io/node_modules/engine.io-parser/node_modules/base64-arraybuffer/LICENSE-MIT",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-shell/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash._basevalues/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-shell/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash._baseslice/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-shell/node_modules/gulp-util/node_modules/lodash.template/node_modules/lodash._basecopy/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-parser/node_modules/benchmark/LICENSE.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-vulcanize/node_modules/vulcanize/node_modules/uglify-js/node_modules/uglify-to-browserify/LICENSE",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-sass/node_modules/node-sass/node_modules/request/node_modules/tough-cookie/public-suffix.txt",
+		"/Volumes/hd/sources/lsi/garda/GSKED/node_modules/gulp-autoprefixer/node_modules/vinyl-sourcemaps-apply/node_modules/source-map/build/prefix-utils.jsm",
+		"/Volumes/hd/sources/lsi/garda/GSKED/bower_components/polymer/polymer.html",
+		"/Users/alain/sources/lsi/garda/gsked/shifts/shift-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/employees/employee-small-reveal-right-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/employees/employee-reveal-up-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/employees/employee-reveal-left-card.html",
+		"/Users/alain/sources/lsi/garda/gsked/employees/employee-reveal-down-card.html",
+		"/Users/alain/Library/Caches/Cleanup At Startup/Transmit/A9DC3E89-AC56-4FE9-B974-3D65EF2CEDFC/index.js",
+		"/Users/alain/Library/Caches/Cleanup At Startup/Transmit/FA27AFE0-06F3-4F59-A732-0F27CB123342/index.html",
+		"/Users/alain/sources/lsi/garda/gsked/ui/scroll-card.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/index.css",
+		"/Volumes/hd/sources/lsi/garda/GSKED/bower_components/core-list/core-list.html",
+		"/Volumes/hd/sources/lsi/garda/GSKED/bower_components/core-list/core-list.css"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 115.0,
+		"where_history":
+		[
+			"~/sources/lsi/garda/gsked,-node_modules/*,-bower_components/*,-public/*,-jspm_packages/*",
+			"~/sources/lsi/garda/gsked,-node_modules/*,-bower_components/*,-public/*",
+			"bower_components/*",
+			"~/sources/lsi/garda/gsked,-node_modules/*,-bower_components/*,-public/*",
+			"~/sources/lsi/garda/gsked,-node_modules/*,-bower_components/*",
+			"/Volumes/MacintoshHD/Users/alain/sources/lsi/garda/gsked,-node_modules/*,-bower_components/*",
+			"/Volumes/MacintoshHD/Users/alain/sources/Subsistence/app",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"300",
+			"_timeline",
+			"timeline_card",
+			"h",
+			"oldScrollAreaHeight",
+			"false",
+			"true",
+			"false",
+			"0",
+			"show",
+			":not(.pinned)",
+			":host(",
+			"dimensions",
+			"parent",
+			"_SMALL",
+			"pinned",
+			"window.selectedCards",
+			"querySelectorAll",
+			"_.each",
+			"exports",
+			"System",
+			"System.",
+			"register",
+			"define",
+			"csp",
+			"CommaExpression",
+			"require",
+			"forOn",
+			"exponentiation",
+			"asyncFunctions",
+			"arrowFunctions",
+			"forOn",
+			"options",
+			"es6",
+			"Array",
+			"for",
+			"require",
+			"bower",
+			"assets",
+			"require",
+			"es6-module",
+			"es6",
+			"$__global",
+			"$__global=",
+			"$__global =",
+			"$__global = ",
+			".System",
+			"babe",
+			"closeOnEmpty",
+			"'",
+			"icon",
+			"menu",
+			"icon",
+			"down",
+			"icon",
+			"fa:",
+			"assets",
+			"hh",
+			"hw",
+			"Math.ceil(h / 2)",
+			"Math.ceil(w / 2)",
+			"trunc",
+			"rgba(255, 255, 255, 1)",
+			".1",
+			"round",
+			"0, 0, 0, 0.1",
+			"0",
+			"_originRect",
+			"tap",
+			"onTap",
+			"_prev",
+			"._pt",
+			".pt",
+			"isw",
+			"ish",
+			"touchmove",
+			"\ntouchmove",
+			"scroll",
+			"tou",
+			"$.panel.",
+			"$.panel",
+			"left",
+			"font: \"core-icons\",",
+			"font: ",
+			"core-icons",
+			"<core-icon icon=\\\".*\\\"></core-icon>\\n",
+			"<core-icon icon=\"communication:email\"></core-icon>",
+			"<td>(.*)</td>\\n[^<]+",
+			"</tr>\\n[^<]+",
+			"<tr>\\n[^<]+",
+			"<tr>\\n",
+			"releasenotes",
+			"employee-reveal-right",
+			"employee",
+			"font-awesome",
+			"coffee",
+			"communication:phone",
+			"-icon",
+			"base",
+			"dialog",
+			"assets",
+			"  ✔",
+			"swiped",
+			"this",
+			"employee-lis",
+			"move-window",
+			"employee",
+			"employee-list-window",
+			"employeelist-window",
+			"employee-list-window",
+			"opened",
+			"log",
+			"getOffsetRect",
+			"iscroll",
+			"_originRect",
+			"_origin",
+			"offsetx",
+			"closeAll",
+			"revealed()",
+			"revealed",
+			"swiped",
+			"this._revealedElement",
+			"querySelector(\"core-icon:not(.small_icon)\")",
+			"querySelector(\"core-icon\")",
+			"core-icon",
+			"onSwipe",
+			"swipe",
+			"left"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"",
+			"$1\\n",
+			"$1",
+			"",
+			"\"",
+			"\":",
+			"\", \"",
+			"",
+			"@",
+			"game.",
+			", \"$1\": ",
+			"\\\"$1\\\"",
+			"\"",
+			"www."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 274.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 118.0
+	},
+	"output.git-commit":
+	{
+		"height": 118.0
+	},
+	"output.git-push":
+	{
+		"height": 118.0
+	},
+	"output.gulp_output":
+	{
+		"height": 198.0
+	},
+	"output.settings_documentation_panel":
+	{
+		"height": 142.0
+	},
+	"output.textarea":
+	{
+		"height": 118.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 140.0
+	},
+	"pinned_build_system": "",
+	"project": "yorkfire.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"app",
+				"ui/app.html"
+			],
+			[
+				"config",
+				"config.js"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"gulp",
+				"Gulpfile.js"
+			],
+			[
+				"overla",
+				"bower_components/core-overlay/core-overlay.html"
+			],
+			[
+				"papebase",
+				"bower_components/paper-dialog/paper-dialog-base.html"
+			],
+			[
+				"paperbas",
+				"bower_components/paper-dialog/paper-dialog-base.html"
+			],
+			[
+				"paa",
+				"bower_components/paper-dialog/paper-action-dialog.html"
+			],
+			[
+				"dialog",
+				"bower_components/paper-dialog/paper-dialog-base.html"
+			],
+			[
+				"papaerbase",
+				"bower_components/paper-dialog/paper-dialog-base.html"
+			],
+			[
+				"rele",
+				"releasenotes.html"
+			],
+			[
+				"date-pick",
+				"bower_components/polymer-date-picker/polymer-date-picker-positioning.html"
+			],
+			[
+				"md-",
+				"bower_components/md-timepicker/md-timepicker.html"
+			],
+			[
+				"over",
+				"bower_components/core-overlay/core-overlay.html"
+			],
+			[
+				"ripple",
+				"bower_components/paper-ripple/paper-ripple.html"
+			],
+			[
+				"focusa",
+				"bower_components/core-focusable/core-focusable.js"
+			],
+			[
+				"button-base",
+				"bower_components/paper-button/paper-button-base.html"
+			],
+			[
+				"button",
+				"bower_components/paper-button/paper-button.html"
+			],
+			[
+				"polymer",
+				"bower_components/polymer/polymer.html"
+			],
+			[
+				"dargs",
+				"node_modules/gulp-ruby-sass/node_modules/dargs/dargs.js"
+			],
+			[
+				"phaser.game",
+				"phaser/docs/Phaser.Game.html"
+			],
+			[
+				"gulp-copy",
+				"node_modules/gulp-copy/index.js"
+			],
+			[
+				"gulp-load",
+				"node_modules/gulp-load/index.js"
+			],
+			[
+				"chalk",
+				"node_modules/chalk/index.js"
+			],
+			[
+				"shell",
+				"node_modules/shelljs/shell.js"
+			],
+			[
+				"rea",
+				"README.md"
+			],
+			[
+				"commander",
+				"node_modules/commander/Readme.md"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/Volumes/MacintoshHD/Users/alain/sources/Subsistence/Subsistence.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 400.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ripple",
+				"drawRipple"
+			],
+			[
+				"hello",
+				"HelloWorldLayer"
+			]
+		],
+		"width": 664.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 399.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

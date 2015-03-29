@@ -1,0 +1,20 @@
+{
+  "name": "yorkfire",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kornalius/yorkfire",
+  "authors": [
+    "Alain Deschenes © ArianeSoft Inc. <arianesoftinc@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
