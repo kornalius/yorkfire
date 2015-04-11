@@ -83,7 +83,6 @@ setupCoffeeScript = ->
 start = ->
   # Enable ES6 in the Renderer process
   app.commandLine.appendSwitch 'js-flags', '--harmony'
-  app.commandLine.appendSwitch('disable-web-security')
 
   args = parseCommandLine()
 

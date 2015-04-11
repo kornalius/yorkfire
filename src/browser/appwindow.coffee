@@ -22,12 +22,19 @@ class AppWindow
     @loadSettings = _.extend(@loadSettings, options)
 
     windowOpts =
-      width: 800
-      height: 600
-      title: options.title ? "You Should Set options.title"
+      width: 1024
+      height: 768
+      # title: "Yorkfire"
+      # 'dark-theme': true
+      # center: true
+      frame: false
       'web-preferences':
         'subpixel-font-scaling': true
         'direct-write': true
+        'webgl': true
+        'web-security': true
+        'experimental-features': true
+        'experimental-canvas-features': true
 
     windowOpts = _.extend(windowOpts, @loadSettings)
 

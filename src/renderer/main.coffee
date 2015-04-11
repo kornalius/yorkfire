@@ -1,296 +1,191 @@
-bonzo = require('bonzo')
+window.York = {}
 
-window.ccss = require 'ccss'
+window._ = require('underscore-plus')
 
-window._ = require('lodash')
-_.mixin(require('underscore.string').exports())
+_.extend(_,
+  uncapitalize: (str) ->
+    return str[0].toLowerCase() + str.slice(1)
+)
+
 _.is = require('is')
+_.extend(_, require('underscore-contrib'))
+_.extend(_, require('starkjs-underscore'))
+_.number = require('underscore.number')
+_.array = require('underscore.array')
+_.extend(_, require('underscore-db'))
+_.db = require('lowdb')
 
-window.$ = (selector) ->
-  if _.isString(selector)
-    if _.startsWith(selector, '<')
-      bonzo.create(selector)
-    else
-      bonzo(document.querySelector(selector))
-  else
-    bonzo(selector)
+York.remote = require('remote')
+York.app = York.remote.require('app')
+York.BrowserWindow = York.remote.require('browser-window')
+York.fs = York.remote.require('fs')
+York.path = York.remote.require('path')
+York.appWindow = York.remote.getCurrentWindow()
 
-Hazel = require('../../hazel/hazel.coffee')
+# York.Hazel = require('../../hazel/dist/hazel.js')
+York.Hazel = require('../../hazel/hazel.coffee')
 
-{ hazel, renderable, span, div, text, input } = Hazel
+# York.Kaffa = require('../../kaffa/dist/kaffa.js')
+York.Kaffa = require('../../kaffa/kaffa.coffee')
 
-# for k, v of Hazel
-#   window[k] = v
+York.$ = York.Hazel.$
+York.hazel = York.Hazel.hazel
+York.cson = require 'cson-parser'
 
-hazel 'baseElement',
-  style:
-    ':host':
-      'display': 'inline-block'
-    'div':
-      'background-color': 'orange'
-      padding: '2px'
+console.log York, _
 
-  template: renderable (el, content) ->
-    div ->
-      if content?
-        content(el)
-      else
-        span "component #{@tagName}"
+{ View } = require('./view.coffee')
+York.View = View
 
-  methods:
-    method0: ->
-      console.log 'method0', @
+{ DesktopView } = require('./views/desktop-view.coffee')
 
+York.dirs = {}
+York.dirs.home = York.app.getPath('home')
+York.dirs.app = York.app.getPath('appData')
+York.dirs.user = York.app.getPath('userData')
+York.dirs.tmp = York.app.getPath('temp')
+York.dirs.root = York.app.getPath('exe')
 
-hazel 'myBaseElement',
-  extends: 'base-element'
+console.log "#{York.app.getName()} v#{York.app.getVersion()}"
 
-  style:
-    ':host':
-      'background-color': 'blue'
-      'color': 'white'
-      margin: '4px'
-      padding: '4px'
-
-  template: renderable (el) ->
-    div ->
-      span "component #{el.tagName}"
-
-  methods:
-    method1: ->
-      console.log 'method1', @
-
-
-hazel 'my element',
-  extends: 'baseElement'
-
-  style:
-    ':host':
-      'background-color': 'red'
-      margin: '4px'
-      padding: '8px'
-      'border-radius': '4px'
-    '#my-input':
-      'margin': '4px 8px'
-      'background-color': 'yellow'
-
-  data:
-    inputValue: 'something'
-
-  template: renderable (el) ->
-    div ->
-      input '#my-input.my-class', type: 'text', value: 'inputValue'
-      text el.tagName
-
-  methods:
-    method0: ->
-      console.log 'method0.1', @
-
-    method1: ->
-      console.log 'method1', @
-
-    method2: ->
-      console.log 'method2', @
-
-
-el = document.createElement('my-element')
+York.desktop = new DesktopView()
+el = document.createElement('desktop-view')
 document.querySelector('body').appendChild(el)
-el.method0()
 
-el = document.createElement('my-base-element')
-document.querySelector('body').appendChild(el)
-el.method0()
+York.appWindow.maximize()
+York.appWindow.setResizable(false)
 
-el = document.createElement('base-element')
-document.querySelector('body').appendChild(el)
-el.method0()
+York.appWindow.on('close', (e) ->
+  console.log 'closed'
+)
 
+York.fs.readFile(York.path.join(York.dirs.home, '.gitconfig'), (err, data) ->
+  throw err if err?
+  console.log data.toString()
+)
 
+# { $, hazel, renderable, span, div, text, input, label } = _.Hazel
 
-# ********** REACT ***********
+# window.onbeforeunload = (e) ->
+#   console.log 'I do not want to be closed'
+#   return false
 
-# ReactShadow = require('react-shadow')
-# React = require('react')
-# ReactMixin = require('react-mixin')
+# window.onblur = (e) ->
+#   console.log 'blur'
 
-# build_tag = (tag) ->
-#   (options...) ->
-#     options.unshift {} if options[0]['_isReactElement'] or options[0].constructor isnt Object
-#     React.DOM[tag].apply @, options
+# window.onfocus = (e) ->
+#   console.log 'focus'
 
-# DOM = (->
-#   object = {}
-#   for element in Object.keys(React.DOM)
-#     object[element] = build_tag element
-#   object
-# )()
+# hazel 'baseElement',
+#   style:
+#     ':host':
+#       'display': 'inline-block'
+#       'cursor': 'default'
+#     'div':
+#       'background-color': 'orange'
+#       padding: '2px'
 
-# {h1, h2, div} = DOM
-
-# CounterClass = React.createClass(
-#   propTypes: initialCount: React.PropTypes.number
-#   defaultProps: initialCount: 0
-#   mixins: [ReactShadow]
-#   cssSource: ":host { color: red; }"
-
-#   tick: =>
-#     @setState count: @state.count + 1
-
-#   render: ->
-#     div onClick: =>
-#       @setState count: @state.count + 10
-#     , "Clicks: #{@state.count}"
-# )
-
-# el = React.createElement(CounterClass, initialCount: 20)
-# d2 = document.createElement('div')
-# c2 = React.render(el, d2)
-# document.body.appendChild(d2)
-
-# Counter = React.createFactory(class CounterComponent extends React.Component
-#   @propTypes = initialCount: React.PropTypes.number
-#   @defaultProps = initialCount: 0
-
-#   @cssSource = ":host { color: red; }"
-
-#   constructor: (props) ->
-#     super props
-#     @state =
-#       count: props.initialCount
-#       interval: setInterval(@tick, 1000)
-
-#   tick: =>
-#     @setState count: @state.count + 1
-
-#   render: ->
-#     div onClick: =>
-#       @setState count: @state.count + 10
-#     , "Clicks: #{@state.count}"
-# )
-
-# c = Counter(initialCount: 10)
-# d1 = document.createElement('div')
-# c1 = React.render(c, d1)
-
-# el = React.createElement(CounterComponent, initialCount: 20)
-# d2 = document.createElement('div')
-# c2 = React.render(el, d2)
-
-# document.body.appendChild(d1)
-# document.body.appendChild(d2)
-
-# ReactMixin(CounterComponent.prototype, ReactShadow)
-
-# # el = React.createElement('p', null, 'This is some text')
-# # console.log el
-# # React.render(el, document.body)
-
-# # el = React.DOM.p(null, 'This is some text')
-# # console.log el
-# # React.render(el, document.body)
-
-
-# *********** VueJS ***********
-
-# Vue = require('vue')
-# Vue.config.debug = true
-# { render, tag, div, span  } = require('teacup')
-
-# Vue.component('my-component',
-#   paramAttributes: ['c']
-
-#   template: render ->
-#     div onclick: 'clicked', ->
-#       span 'Hello World {{c}}'
-
-#   data: ->
-#     c: 1
+#   template: renderable (el, content) ->
+#     div ->
+#       if content?
+#         content(el)
+#       else
+#         span "component #{el.tagName}"
 
 #   methods:
-#     clicked: ->
-#       @c++
+#     method0: ->
+#       console.log 'method0', @
 
-#   compiled: ->
-#     console.log @c
-# )
-
-# new Vue(
-#   el: 'body'
-
-#   template: render ->
-#     tag 'my-component', c: 2
-# )
-
-# el = vm.$mount()
-# console.log el
-# document.body.appendChild(el.$el)
+#   events:
+#     'click': (e) ->
+#       console.log 'clicked base-element', @
 
 
-# ********** Trifl ***********
+# hazel 'myBaseElement',
+#   extends: 'base-element'
 
-# trifl = require('trifl')
-# trifl.expose window
-# trifl.tagg.expose window
+#   style:
+#     ':host':
+#       'background-color': 'blue'
+#       'color': 'white'
+#       margin: '4px'
+#       padding: '4px'
 
-# v = view (newslist) ->
-#   ul class: 'newslist', ->
-#     style scoped: '', '.desc, .newslist {color: cyan;}',
-#     newslist.forEach (news) ->
-#       li key: news.id, ->
-#         style scoped: '', '.desc {color: red;}',
-#         a href: '/news/#{news.slugid}', news.title, onclick: ->
-#           navigate '/news/#{news.slugid}'
-#         span class: 'desc', news.description
+#   template: renderable (el) ->
+#     div ->
+#       span "component #{el.tagName}"
 
-# document.body.appendChild v.el
-# v([
-#   slugid: '2323'
-#   title: 'It is real'
-#   description: 'ksaldjlsjd klsjdkl saj dkljs alkd jsaj'
-# ,
-#   slugid: '0489'
-#   title: 'It is fake'
-#   description: 'jkd s-98uqw [jdjkdhasj hsd'
-# ,
-#   slugid: '2373'
-#   title: 'It might be'
-#   description: 'eioui dhjskldf asjkldhk hyuyoe'
-# ])
+#   methods:
+#     method1: ->
+#       console.log 'method1', @
+
+#   events:
+#     'click span': (e) ->
+#       console.log 'clicked span for my-base-element', @
+#       e.stop()
 
 
-# ********** Zorium ***********
+# hazel 'my element',
+#   extends: 'baseElement'
 
-# z = require('zorium')
+#   style:
+#     ':host':
+#       'background-color': 'red'
+#       margin: '4px'
+#       padding: '8px'
+#       'border-radius': '4px'
+#     '#my-input':
+#       'margin': '4px 8px'
+#       'background-color': 'yellow'
 
-# class HelloMessage
-#   render: ({name}) ->
-#     z 'div',
-#       "Hello #{name}"
+#   data:
+#     inputValue: 'something'
+#     checkValue: false
 
-# z.render(document.body, z(new HelloMessage(), name: 'Zorium'))
+#   attached: ->
+#     @data 'idValue', @querySelector(":root /deep/ #my-input")
 
-# class Timer
-#   constructor: ->
-#     @state = z.state
-#       secondsElapsed: 0
-#       interval: null
+#   template: renderable (el) ->
+#     div ->
+#       input '#my-input.my-class', type: 'text', bind: 'inputValue'
+#     div ->
+#       input '#my-check.my-class', type: 'checkbox', bind: 'checkValue'
+#       label 'Check'
+#     div ->
+#       text "#{el.data('$.myInput')?.value}, #{el.data 'inputValue'}"
+#     div ->
+#       text "#{el.data('$.myCheck')?.checked}, #{el.data 'checkValue'}"
 
-#   onMount: =>
-#     @state.set(interval: setInterval(=>
-#       @state.set secondsElapsed: @state().secondsElapsed + 1
-#     , 1000))
+#   methods:
+#     method0: ->
+#       console.log 'method0.1', @
 
-#   onBeforeUnmount: =>
-#     clearInterval @state().interval
+#     method1: ->
+#       console.log 'method1', @
 
-#   clicker: (el) =>
-#     console.log "clicked"
-#     @state.set secondsElapsed: @state().secondsElapsed + 10
+#     method2: ->
+#       console.log 'method2', @
 
-#   render: =>
-#     z 'link', href: 'http://fonts.googleapis.com/css?family=Roboto:400,300,500', rel='stylesheet', type='text/css'
-#     z 'style', color: 'red'
-#     z '.myclass#myid', style: {color: 'red'}, onclick: ( => @state.set secondsElapsed: @state().secondsElapsed + 10),
-#       "Seconds Elapsed: #{@state().secondsElapsed}"
+#   events:
+#     'click': null
 
-# z.render document.body, new Timer()
+#     'click span': (e) ->
+#       console.log 'clicked span for my-element', @
+
+#     'change #my-input': (e) ->
+#       console.log 'changed', @value
+
+
+# el = document.createElement('my-element')
+# document.querySelector('body').appendChild(el)
+# el.method0()
+
+# el = document.createElement('my-base-element')
+# document.querySelector('body').appendChild(el)
+# el.method0()
+
+# el = document.createElement('base-element')
+# document.querySelector('body').appendChild(el)
+# el.method0()
+
+# # console.log $('my-element, my-base-element, base-element')

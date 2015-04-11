@@ -26,6 +26,7 @@ node_modules
 
 atom-shell
 hazel
+kaffa
 
 # Users Environment Variables
 .lock-wscript
