@@ -1,0 +1,14 @@
+{
+  "name": "york-text",
+  "version": "0.0.1",
+  "description": "additional text class methods",
+  "main": "text.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "text"
+  ],
+  "author": "Alain Deschenes <arianesoftinc@gmail.com>",
+  "license": "MIT"
+}

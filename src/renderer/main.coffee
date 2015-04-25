@@ -1,70 +1,117 @@
-window.York = {}
+r = require('remote')
+a = r.require('app')
+p = r.require('path')
 
-window._ = require('underscore-plus')
+userPath = p.join(a.getPath('userData'), 'user')
 
-_.extend(_,
-  uncapitalize: (str) ->
-    return str[0].toLowerCase() + str.slice(1)
-)
+# Hazel = require('../../hazel/dist/hazel.js')
+Hazel = require('../../hazel/hazel.coffee')
 
-_.is = require('is')
-_.extend(_, require('underscore-contrib'))
-_.extend(_, require('starkjs-underscore'))
-_.number = require('underscore.number')
-_.array = require('underscore.array')
-_.extend(_, require('underscore-db'))
-_.db = require('lowdb')
+# Kaffa = require('../../kaffa/dist/kaffa.js')
+Kaffa = require('../../kaffa/kaffa.coffee')
 
-York.remote = require('remote')
-York.app = York.remote.require('app')
-York.BrowserWindow = York.remote.require('browser-window')
-York.fs = York.remote.require('fs')
-York.path = York.remote.require('path')
-York.appWindow = York.remote.getCurrentWindow()
+if !window.$?
+  window.$ = require('cash-dom')
 
-# York.Hazel = require('../../hazel/dist/hazel.js')
-York.Hazel = require('../../hazel/hazel.coffee')
+if !window._?
+  window._ = require('underscore-plus')
 
-# York.Kaffa = require('../../kaffa/dist/kaffa.js')
-York.Kaffa = require('../../kaffa/kaffa.coffee')
+  _.extend _,
+    uncapitalize: (str) ->
+      return str[0].toLowerCase() + str.slice(1)
 
-York.$ = York.Hazel.$
-York.hazel = York.Hazel.hazel
-York.cson = require 'cson-parser'
+  _.is = require('is')
+  _.extend(_, require('underscore-contrib'))
+  _.extend(_, require('starkjs-underscore'))
+  _.number = require('underscore.number')
+  _.array = require('underscore.array')
+  _.extend(_, require('underscore-db'))
+  _.db = require('lowdb')
 
-console.log York, _
+npm = require('npm')
 
-{ View } = require('./view.coffee')
-York.View = View
+if !window.York?
+  window.York =
+    remote: r
+    app: a
+    BrowserWindow: r.require('browser-window')
+    appWindow: r.getCurrentWindow()
+    dirs:
+      home: a.getPath('home')
+      app: a.getPath('appData')
+      user: userPath
+      tmp: a.getPath('temp')
+      root: a.getPath('exe')
+      module: p.dirname(module.filename)
+      node_modules: p.join(userPath, 'node_modules')
+      user_pkg: p.join(userPath, 'package.json')
+    fs: r.require('fs-plus')
+    path: p
+    cson: require 'cson-parser'
+    npm: npm
+    buffer: r.require 'buffer'
+    child_process: r.require 'child_process'
+    events: r.require 'events'
+    domain: r.require 'domain'
+    http: r.require 'http'
+    https: r.require 'https'
+    os: r.require 'os'
+    stream: r.require 'stream'
+    tls: r.require 'tls'
+    url: r.require 'url'
+    vm: r.require 'vm'
+    zlib: r.require 'zlib'
+    util: r.require 'util'
 
-{ DesktopView } = require('./views/desktop-view.coffee')
+  _.extend York,
+    settings: require('./settings.coffee')
+    plugins: require('./plugins.coffee')
+  ,
+    Hazel
+  ,
+    Kaffa
 
-York.dirs = {}
-York.dirs.home = York.app.getPath('home')
-York.dirs.app = York.app.getPath('appData')
-York.dirs.user = York.app.getPath('userData')
-York.dirs.tmp = York.app.getPath('temp')
-York.dirs.root = York.app.getPath('exe')
+  require('./view.coffee')
 
-console.log "#{York.app.getName()} v#{York.app.getVersion()}"
+console.log York
 
-York.desktop = new DesktopView()
-el = document.createElement('desktop-view')
-document.querySelector('body').appendChild(el)
+{ app, appWindow } = York
 
-York.appWindow.maximize()
-York.appWindow.setResizable(false)
+console.log "Booting #{app.getName()} v#{app.getVersion()}..."
+console.log "Root path: #{York.dirs.root}"
+console.log "Module path: #{York.dirs.node_modules}"
+console.log "Temp path: #{York.dirs.tmp}"
+console.log "App path: #{York.dirs.app}"
+console.log "User path: #{York.dirs.user}"
+console.log "Home path: #{York.dirs.home}"
 
-York.appWindow.on('close', (e) ->
-  console.log 'closed'
-)
+appWindow.maximize()
+appWindow.setResizable(false)
 
-York.fs.readFile(York.path.join(York.dirs.home, '.gitconfig'), (err, data) ->
-  throw err if err?
-  console.log data.toString()
-)
+app.on 'before-quit', ->
+  console.log 'before-quit'
+  York.settings.saveSync()
+  York.plugins.unload()
+  console.log "Shutting down Hazel..."
+  York.shutHazel()
+  console.log "Shutting down Kaffa..."
+  York.shutKaffa()
 
-# { $, hazel, renderable, span, div, text, input, label } = _.Hazel
+York.settings.load (err) ->
+  # York.plugins.install ['async'], (err) ->
+  York.plugins.load()
+
+  tx = York.t("  Testing  ")
+  console.log tx.trim('l')
+
+  $('desktop-view')[0].shadowRoot.appendChild($('<button onclick="York.plugins.unload(\'york-desktop\')">unload desktop</button>')[0])
+
+  console.log York
+
+  # York.settings.set 'test', 'something', true
+
+
+# { $, hazel, renderable, span, div, text, input, label } = York
 
 # window.onbeforeunload = (e) ->
 #   console.log 'I do not want to be closed'
@@ -76,7 +123,7 @@ York.fs.readFile(York.path.join(York.dirs.home, '.gitconfig'), (err, data) ->
 # window.onfocus = (e) ->
 #   console.log 'focus'
 
-# hazel 'baseElement',
+# hazel 'base-element',
 #   style:
 #     ':host':
 #       'display': 'inline-block'
@@ -92,16 +139,14 @@ York.fs.readFile(York.path.join(York.dirs.home, '.gitconfig'), (err, data) ->
 #       else
 #         span "component #{el.tagName}"
 
-#   methods:
-#     method0: ->
-#       console.log 'method0', @
+#   method0: ->
+#     console.log 'method0', @
 
-#   events:
-#     'click': (e) ->
-#       console.log 'clicked base-element', @
+#   '@click': (e) ->
+#     console.log 'clicked base-element', @
 
 
-# hazel 'myBaseElement',
+# hazel 'my-base-element',
 #   extends: 'base-element'
 
 #   style:
@@ -115,18 +160,20 @@ York.fs.readFile(York.path.join(York.dirs.home, '.gitconfig'), (err, data) ->
 #     div ->
 #       span "component #{el.tagName}"
 
-#   methods:
-#     method1: ->
-#       console.log 'method1', @
+#   method0: ->
+#     @super()
+#     console.log 'method0.1', @
 
-#   events:
-#     'click span': (e) ->
-#       console.log 'clicked span for my-base-element', @
-#       e.stop()
+#   method1: ->
+#     console.log 'method1', @
+
+#   '@click span': (e) ->
+#     console.log 'clicked span for my-base-element', @
+#     e.stop()
 
 
-# hazel 'my element',
-#   extends: 'baseElement'
+# hazel 'my-element',
+#   extends: 'my-base-element'
 
 #   style:
 #     ':host':
@@ -156,24 +203,23 @@ York.fs.readFile(York.path.join(York.dirs.home, '.gitconfig'), (err, data) ->
 #     div ->
 #       text "#{el.data('$.myCheck')?.checked}, #{el.data 'checkValue'}"
 
-#   methods:
-#     method0: ->
-#       console.log 'method0.1', @
+#   method0: ->
+#     @super()
+#     console.log 'method0.2', @
 
-#     method1: ->
-#       console.log 'method1', @
+#   method1: ->
+#     console.log 'method1', @
 
-#     method2: ->
-#       console.log 'method2', @
+#   method2: ->
+#     console.log 'method2', @
 
-#   events:
-#     'click': null
+#   '@click': null
 
-#     'click span': (e) ->
-#       console.log 'clicked span for my-element', @
+#   '@click span': (e) ->
+#     console.log 'clicked span for my-element', @
 
-#     'change #my-input': (e) ->
-#       console.log 'changed', @value
+#   '@change #my-input': (e) ->
+#     console.log 'changed', @value
 
 
 # el = document.createElement('my-element')
