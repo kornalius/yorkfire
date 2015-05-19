@@ -66,6 +66,7 @@
     "npm": "^2.7.6",
     "nslog": "^2.0.0",
     "numeral": "^1.5.3",
+    "packery": "^1.4.1",
     "property-accessors": "^1",
     "radio": "^0.2.0",
     "require-dot-file": "^0.4.0",

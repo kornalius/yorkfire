@@ -1,0 +1,15 @@
+{
+  "name": "york-behaviors",
+  "version": "0.0.1",
+  "description": "base class behaviors",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "behavior",
+    "behaviors"
+  ],
+  "author": "Alain Deschenes <arianesoftinc@gmail.com>",
+  "license": "MIT"
+}

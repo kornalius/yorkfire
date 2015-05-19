@@ -1,8 +1,10 @@
 sysPath = ->
   require('path').join(York.dirs.module, 'settings.cson')
 
+
 userPath = ->
   require('path').join(York.dirs.user, 'settings.cson')
+
 
 module.exports =
 
@@ -33,6 +35,7 @@ module.exports =
         throw err
         cb(err) if cb?
 
+
   save: (cb) ->
     { cson } = York
     console.log "Saving settings..."
@@ -40,16 +43,19 @@ module.exports =
     require('fs').writeFile userPath(), cson.stringify(York.settings.user, null, 2), (err) ->
       cb(err) if cb?
 
+
   saveSync: ->
     { cson } = York
     console.log "Saving settings (sync)..."
     console.log "  user"
     require('fs').writeFileSync userPath(), cson.stringify(York.settings.user, null, 2)
 
+
   set: (key, value, autosave=false) ->
     _.setValueForKeyPath York.settings.user, key, value
     if autosave
       @save()
+
 
   get: (key, defaultValue) ->
     _.valueForKeyPath _.extend({}, York.settings.system, York.settings.user), key

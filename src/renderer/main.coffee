@@ -2,16 +2,20 @@ r = require('remote')
 a = r.require('app')
 p = r.require('path')
 
-userPath = p.join(a.getPath('userData'), 'user')
+PropertyAccessors = require 'property-accessors'
+
+userPath = p.join(a.getPath('home'), 'Yorkfire')
 
 # Hazel = require('../../hazel/dist/hazel.js')
 Hazel = require('../../hazel/hazel.coffee')
 
 # Kaffa = require('../../kaffa/dist/kaffa.js')
 Kaffa = require('../../kaffa/kaffa.coffee')
+{ Class } = Kaffa
+
 
 if !window.$?
-  window.$ = require('cash-dom')
+  window.$ = Hazel.$
 
 if !window._?
   window._ = require('underscore-plus')
@@ -71,11 +75,67 @@ if !window.York?
   ,
     Kaffa
 
-  require('./view.coffee')
-
-console.log York
 
 { app, appWindow } = York
+
+
+_exposeDef = (o, name, def) ->
+  PropertyAccessors.includeInto(o)
+
+  e = _.clone(def)
+  if !o.__york?
+    o.__york = {}
+  if !o.__york.exposed?
+    o.__york.exposed = {}
+  o.__york.exposed[name] = e
+
+  if e.fn?
+    o::[name] = e.fn
+    e._args = e.fn.arguments
+  else
+    o[name] = if e.value? then e.value else null
+    if e.get? or e.set?
+      o.accessor name,
+        get: e.get if e.get?
+        set: e.set if e.set?
+
+
+_unexposeDef = (o, name) ->
+  if o.__york?.exposed?
+    e = o.__york.exposed[name]
+
+    if e.fn?
+      delete o::[name]
+    else
+      delete o[name]
+      # if e.get? or e.set?
+      #   o.accessor name,
+      #     get: e.get if e.get?
+      #     set: e.set if e.set?
+
+    delete o.__york.exposed[name]
+
+    if _.keys(o.__york.exposed).length == 0
+      delete o.__york.exposed
+
+
+York.expose = (o, name, def) ->
+  if _.isObject(name)
+    _exposeDef(o, k, v) for k, v of name
+  else
+    _exposeDef(o, name, def)
+
+
+York.unexpose = (o, name) ->
+  if _.isObject(name)
+    _unexposeDef(o, k) for k of name
+  else
+    _unexposeDef(o, name)
+
+
+# Make sure home Yorkfire directory exists
+if !York.fs.existsSync(userPath)
+  York.fs.mkdirSync(userPath)
 
 console.log "Booting #{app.getName()} v#{app.getVersion()}..."
 console.log "Root path: #{York.dirs.root}"
@@ -89,7 +149,6 @@ appWindow.maximize()
 appWindow.setResizable(false)
 
 app.on 'before-quit', ->
-  console.log 'before-quit'
   York.settings.saveSync()
   York.plugins.unload()
   console.log "Shutting down Hazel..."
@@ -104,39 +163,46 @@ York.settings.load (err) ->
   tx = York.t("  Testing  ")
   console.log tx.trim('l')
 
-  $('desktop-view')[0].shadowRoot.appendChild($('<button onclick="York.plugins.unload(\'york-desktop\')">unload desktop</button>')[0])
+  $('desktop-view')[0].shadowRoot.appendChild($('<button-view color="red" on-click="York.plugins.unload(\'york-desktop\')">unload desktop</button-view>')[0])
+
+  $('desktop-view')[0].shadowRoot.appendChild($('<button-view color="transparent-black" on-click="$(\'desktop-view\')[0].toggleSelect(); console.log(\'button clicked\'); event.stopPropagation();">toggle select</button-view>')[0])
 
   console.log York
 
   # York.settings.set 'test', 'something', true
 
 
-# { $, hazel, renderable, span, div, text, input, label } = York
+# { $, hazel, BaseView, renderable, span, div, text, input, label } = York
 
-# window.onbeforeunload = (e) ->
-#   console.log 'I do not want to be closed'
-#   return false
+# # window.onbeforeunload = (e) ->
+# #   console.log 'I do not want to be closed'
+# #   return false
 
-# window.onblur = (e) ->
-#   console.log 'blur'
+# # window.onblur = (e) ->
+# #   console.log 'blur'
 
-# window.onfocus = (e) ->
-#   console.log 'focus'
+# # window.onfocus = (e) ->
+# #   console.log 'focus'
 
-# hazel 'base-element',
-#   style:
-#     ':host':
-#       'display': 'inline-block'
-#       'cursor': 'default'
-#     'div':
-#       'background-color': 'orange'
-#       padding: '2px'
+# BaseElement = Class 'BaseElement',
+#   extends: BaseView
 
-#   template: renderable (el, content) ->
-#     div ->
-#       if content?
-#         content(el)
-#       else
+#   created: ->
+#     console.log "BaseElement.constructor"
+#     @super()
+
+#   layout:
+
+#     style: ->
+#       ':host':
+#         'display': 'inline-block'
+#         'cursor': 'default'
+#       'div':
+#         'background-color': 'orange'
+#         padding: '2px'
+
+#     template: renderable (el) ->
+#       div ->
 #         span "component #{el.tagName}"
 
 #   method0: ->
@@ -146,19 +212,25 @@ York.settings.load (err) ->
 #     console.log 'clicked base-element', @
 
 
-# hazel 'my-base-element',
-#   extends: 'base-element'
+# MyBaseElement = Class 'MyBaseElement',
+#   extends: BaseElement
 
-#   style:
-#     ':host':
-#       'background-color': 'blue'
-#       'color': 'white'
-#       margin: '4px'
-#       padding: '4px'
+#   created: ->
+#     console.log "MyBaseElement.constructor"
+#     @super()
 
-#   template: renderable (el) ->
-#     div ->
-#       span "component #{el.tagName}"
+#   layout:
+
+#     style: ->
+#       ':host':
+#         'background-color': 'blue'
+#         'color': 'white'
+#         margin: '4px'
+#         padding: '4px'
+
+#     # template: renderable (el) ->
+#     #   div ->
+#     #     span "component #{el.tagName}"
 
 #   method0: ->
 #     @super()
@@ -172,36 +244,43 @@ York.settings.load (err) ->
 #     e.stop()
 
 
-# hazel 'my-element',
-#   extends: 'my-base-element'
+# MyElement = Class 'MyElement',
+#   extends: MyBaseElement
 
-#   style:
-#     ':host':
-#       'background-color': 'red'
-#       margin: '4px'
-#       padding: '8px'
-#       'border-radius': '4px'
-#     '#my-input':
-#       'margin': '4px 8px'
-#       'background-color': 'yellow'
+#   created: ->
+#     console.log "MyElement.constructor"
+#     @super()
 
-#   data:
-#     inputValue: 'something'
-#     checkValue: false
+#   layout:
+
+#     style: ->
+#       ':host':
+#         'background-color': 'red'
+#         margin: '4px'
+#         padding: '8px'
+#         'border-radius': '4px'
+#       '#my-input':
+#         'margin': '4px 8px'
+#         'background-color': 'yellow'
+
+#     template: renderable (el) ->
+#       div ->
+#         div ->
+#           input '#my-input.my-class', type: 'text', bind: 'inputValue'
+#         div ->
+#           input '#my-check.my-class', type: 'checkbox', bind: 'checkValue'
+#           label 'Check'
+#         div ->
+#           text "#{el.$$?.myInput?.value}, #{el.inputValue}"
+#         div ->
+#           text "#{el.$$?.myCheck?.checked}, #{el.checkValue}"
 
 #   attached: ->
-#     @data 'idValue', @querySelector(":root /deep/ #my-input")
+#     @idValue = @querySelector(":root /deep/ #my-input")
 
-#   template: renderable (el) ->
-#     div ->
-#       input '#my-input.my-class', type: 'text', bind: 'inputValue'
-#     div ->
-#       input '#my-check.my-class', type: 'checkbox', bind: 'checkValue'
-#       label 'Check'
-#     div ->
-#       text "#{el.data('$.myInput')?.value}, #{el.data 'inputValue'}"
-#     div ->
-#       text "#{el.data('$.myCheck')?.checked}, #{el.data 'checkValue'}"
+#   $inputValue: 'something'
+
+#   $checkValue: false
 
 #   method0: ->
 #     @super()
@@ -222,16 +301,26 @@ York.settings.load (err) ->
 #     console.log 'changed', @value
 
 
+# hazel 'base-element', BaseElement
+# hazel 'my-base-element', MyBaseElement
+# hazel 'my-element', MyElement
+
+
 # el = document.createElement('my-element')
 # document.querySelector('body').appendChild(el)
 # el.method0()
+# el.method1()
+# el.method2()
 
 # el = document.createElement('my-base-element')
 # document.querySelector('body').appendChild(el)
 # el.method0()
+# el.method1()
 
 # el = document.createElement('base-element')
 # document.querySelector('body').appendChild(el)
 # el.method0()
 
 # # console.log $('my-element, my-base-element, base-element')
+
+# # console.log York.b(true)

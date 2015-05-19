@@ -1,13 +1,4 @@
-{ hazel, Plugin, expose, unexpose, renderable, span, Text, t } = York
-
-hazel 'text-view',
-  extends: 'base-view'
-
-  template: renderable (el, content) ->
-    span "#{el.data()}"
-
-  updated: ->
-
+{ Class, Plugin, expose, unexpose, Text, t } = York
 
 module.exports =
 
@@ -28,7 +19,6 @@ module.exports =
             return t()
 
   unload: ->
-
     unexpose Text,
 
       trim: {}

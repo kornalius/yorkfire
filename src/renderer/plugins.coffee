@@ -14,6 +14,7 @@ packages = ->
       location: if York.fs.existsSync(fn) then pn else York.path.join(York.dirs.node_modules, n)
   return nr
 
+
 plugins = (type) ->
   r = []
   if !type?
@@ -29,24 +30,30 @@ plugins = (type) ->
         r.push k
   return r
 
+
 findPackage = (name) ->
   for p in packages()
     if p.name == name
       return p
   return { name: null, plugin: false, version: null }
 
+
 packagePath = (name) ->
   { name, version, location } = findPackage(name)
   if name? then York.path.join(location, name)
 
+
 packageFile = (name) ->
   York.path.join(packagePath(name), 'package.json')
+
 
 packageJson = (name) ->
   JSON.parse(York.fs.readFileSync(packageFile(name)))
 
+
 mainPackageFile = (name) ->
   York.path.join(packagePath(name), packageJson(name).main)
+
 
 initPackageJson = ->
   { fs } = York
@@ -57,6 +64,7 @@ initPackageJson = ->
       private: true
       dependencies: {}
     , null, '  ')
+
 
 install = (names, cb) ->
   { npm } = York
@@ -71,6 +79,7 @@ install = (names, cb) ->
       throw err if err?
       cb(arguments) if cb?
 
+
 uninstall = (names, cb) ->
   { npm, settings } = York
   initPackageJson()
@@ -84,14 +93,17 @@ uninstall = (names, cb) ->
         unload(n)
       cb(arguments) if cb?
 
+
 installed = (name) ->
   findPackage(name).name?
+
 
 loaded = (name) ->
   for p in York.loadedPlugins
     if p.name == name
       return p
   return null
+
 
 load = (name, spaces) ->
   if name?
@@ -121,6 +133,7 @@ load = (name, spaces) ->
   #     p = new Plugin f, ->
   #       console.log "  #{p.name}#{if p.ignored then ' -- ignored --' else ''}"
 
+
 unload = (name, spaces) ->
   if name?
     if !spaces?
@@ -137,7 +150,9 @@ unload = (name, spaces) ->
     for p in York.loadedPlugins
       unload(p.name, '  ')
 
+
 publish = (name) ->
+
 
 create = (opts) ->
   { fs } = York
@@ -148,6 +163,7 @@ create = (opts) ->
     opts.main = 'main.coffee'
   fs.writeFileSync packageFile(fn), JSON.stringify(opts, null, '  ')
   fs.writeFileSync mainPackageFile(fn), ''
+
 
 module.exports =
 

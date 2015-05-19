@@ -1,0 +1,20 @@
+html {
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-smoothing: antialiased;
+  line-height: 1em;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #f7f7f7;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+html /deep/ [hidden],
+html /deep/ template {
+  display: none;
+}

@@ -20,7 +20,7 @@
 				"static",
 				"vendor",
 				"atom-shell",
-				"build",
+				// "build",
 				"script",
 				// "node_modules",
 				"apm",

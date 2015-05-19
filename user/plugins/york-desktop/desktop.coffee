@@ -1,44 +1,47 @@
 TaskPanel = require('./task-panel.coffee')
 
-{ hazel, Plugin, expose, unexpose, renderable, div, span } = York
+{ hazel, BaseView, Class, Plugin, css, expose, unexpose, renderable, theme, div, span } = York
+{ block, absolute  } = css
 
-hazel 'desktop-view',
-  extends: 'base-view'
+York.DesktopView = Class 'DesktopView',
+  extends: BaseView
+  with: [York.SelectBehavior]
 
-  attributes: 'color'
+  layout:
 
-  style: ->
-    ':host':
-      display: 'block'
-      position: 'absolute'
-      color: 'white'
-      width: '100%'
-      height: '100%'
-      backgroundColor: if @color? then @color else 'black'
-    '#text':
-      display: 'inline-block'
-      margin: '16px'
+    attributes: ['color']
 
-  template: renderable (el, content) ->
-    div ->
-      span '#text', "DESKTOP"
-      span '#text', "DESKTOP"
+    style: ->
+      ':host':
+        display: block
+        position: absolute
+        width: '100%'
+        maxWidth: '100%'
+        minHeight: '100%'
+        backgroundColor: theme[if @color? then @color else 'white'].color
+        color: theme[if @color? then @color else 'black'].text
+        padding: theme.padding.small
+
+      # '#text':
+        # display: 'inline-block'
+        # margin: '16px'
+
+
+    template: renderable (el) ->
+      div ->
+        label_view '#text', tag: true, color: 'purple',  "DESKTOP 1"
+        label_view '#text', "DESKTOP 2"
+        icon_view color: 'red', circular: true, 'picture'
+
+
+  '@click': (e) ->
+    console.log 'clicked', e
+
 
   created: ->
     @super()
     @panels = []
 
+
   addPanel: (align) ->
     return document.createElement('task-panel-view')
-
-
-module.exports =
-
-  load: ->
-    York.appendElement 'desktop-view', 'body',
-      color: 'silver'
-
-  unload: ->
-    $(':root /deep/ desktop-view').each (el) ->
-      if el.parentNode?
-        el.parentNode.removeChild(el)
