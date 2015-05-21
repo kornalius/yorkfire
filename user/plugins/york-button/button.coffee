@@ -16,7 +16,7 @@ York.ButtonView = Class 'ButtonView',
         minHeight: em 1
         outline: none
         borderRadius: rem .3
-        border: if @color == 'transparent' then "2px solid #{theme.transparent.text}" else none
+        border: if @color? and @color.startsWith('transparent') then "2px solid #{theme[@color].text}" else none
         verticalAlign: baseline
         margin: em 0, .25, 0, 0
         padding: em .79, 1.5, .79
@@ -52,7 +52,7 @@ York.ButtonView = Class 'ButtonView',
         backgroundImage: important none
         boxShadow: important '0px 0px 0px 1px transparent inset, 0px 0px 1px rgba(81, 167, 232, .8) inset, 0px 0px 3px 2px rgba(81, 167, 232, .8)'
 
-      ':host(:focus).icon':
+      ':host(:focus) .icon':
         opacity: .85
 
       ':host(:active), :host(.active), :host([active])':
@@ -61,7 +61,7 @@ York.ButtonView = Class 'ButtonView',
         color: rgba(0, 0, 0, .8)
         boxShadow: important '0px 0px 0px 1px transparent inset, 0px 1px 4px 0px rgba(39, 41, 43, .15) inset'
 
-      ':host(:active:hover), :host(.active:hover), :host([active]:hover)':
+      ':host(:active:hover), :host(.active:hover), :host([active]):hover':
         backgroundColor: '#d0d0d0'
         backgroundImage: none
         color: rgba(0, 0, 0, .8)
@@ -87,7 +87,7 @@ York.ButtonView = Class 'ButtonView',
     template: renderable (el, content) ->
       if _.isString el.icon
         icon_view icon: el.icon
-      label_view el.textContent
+      text_view el.textContent
 
 
 module.exports =

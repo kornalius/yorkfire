@@ -29,9 +29,11 @@ York.DesktopView = Class 'DesktopView',
 
     template: renderable (el) ->
       div ->
-        label_view '#text', tag: true, color: 'purple',  "DESKTOP 1"
-        label_view '#text', "DESKTOP 2"
-        icon_view color: 'red', circular: true, 'picture'
+        text_view '#text', tag: true, color: 'purple', attach: 'bottom',  'DESKTOP 1'
+        text_view '#text', 'DESKTOP 2'
+        text_view '#text', bordered: 'black', 'DESKTOP 3'
+        icon_view color: 'blue', circular: true, 'picture'
+        checkbox_view '#checkbox', type: 'checkbox', 'Check this box'
 
 
   '@click': (e) ->

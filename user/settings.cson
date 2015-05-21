@@ -1,9 +1,8 @@
 plugins:
   "york-default-theme": true
   "york-behaviors": true
-  "york-label": true
+  "york-text": true
+  "york-checkbox": true
   "york-button": true
   "york-icon": true
-  "york-button": true
-  "york-text": true
   "york-desktop": true

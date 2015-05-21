@@ -1,13 +1,13 @@
 {
-  "name": "york-label",
+  "name": "york-checkbox",
   "version": "0.0.1",
-  "description": "additional label class methods",
-  "main": "label.coffee",
+  "description": "additional checkbox class methods",
+  "main": "checkbox.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "label"
+    "checkbox"
   ],
   "author": "Alain Deschenes <arianesoftinc@gmail.com>",
   "license": "MIT"
