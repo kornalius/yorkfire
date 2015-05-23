@@ -29,9 +29,12 @@ class AppWindow
       # center: true
       frame: false
       'web-preferences':
+        'javascript': true
+        'images': true
         'subpixel-font-scaling': true
         'direct-write': true
         'webgl': true
+        'webaudio': true
         'web-security': true
         'experimental-features': true
         'experimental-canvas-features': true

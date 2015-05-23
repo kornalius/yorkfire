@@ -5,6 +5,13 @@
   "description": "A Node.js OS",
   "main": "./src/browser/main.js",
   "author": "Alain Deschenes © ArianeSoft Inc. <arianesoftinc@gmail.com>",
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/kornalius/yorkfire/LICENSE.md"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kornalius/yorkfire.git"
@@ -12,16 +19,13 @@
   "bugs": {
     "url": "https://github.com/kornalius/yorkfire/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/kornalius/yorkfire/LICENSE.md"
-    }
-  ],
   "dependencies": {
+    "q": "^1.0.1",
+    "semver": "2.2.1",
     "async": "0.2.6",
     "babel-core": "^4.0.2",
     "better-console": "^0.2.4",
+    "brace": "^0.5.1",
     "cash-dom": "^1.0.0",
     "coffee-script": "1.7.0",
     "coffeestack": "0.7.0",
@@ -97,6 +101,5 @@
     "build": "node script/build",
     "run": "node script/run",
     "clean": "node script/clean"
-  },
-  "devDependencies": {}
+  }
 }

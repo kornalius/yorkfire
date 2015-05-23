@@ -1,4 +1,4 @@
-{ Text, t, hazel, BaseView, Class, Plugin, expose, unexpose, theme, renderable, div, span } = York
+{ Text, t, hazel, BaseView, Class, Plugin, expose, unexpose, theme, renderable, div, span, text } = York
 { important, none, auto, inherit, absolute, baseline, relative, left, solid, transparent, rgba, em, rem } = York.css
 
 
@@ -7,11 +7,15 @@ York.TextView = Class 'TextView',
 
   layout:
 
-    attributes: ['icon', 'tag', 'attach', 'ribbon', 'bordered', 'color']
+    # type = label, input, edit
+    # attach = left, right, top, bottom
+    # ribbon = left, right, top, bottom
+    attributes: ['icon', 'type', 'attach', 'ribbon', 'bordered', 'tag', 'color', 'disabled']
 
     style: ->
 
       ':host':
+        position: relative
         display: 'inline-block'
         verticalAlign: baseline
         lineHeight: 1
@@ -25,6 +29,10 @@ York.TextView = Class 'TextView',
         transition: 'background .2s ease'
         padding: 0
         color: theme[if @color? then @color else 'white'].text
+
+      '.editor':
+        width: em 5
+        height: em 1
 
       ':host([icon]:first-child)':
         marginLeft: em 0
@@ -51,18 +59,18 @@ York.TextView = Class 'TextView',
       # ':host([tag]):hover':
         # opacity: .5
 
-      ':host([bordered])':
-        borderRadius: rem .3
-        padding: theme.padding.small
-        border: "1px solid #{theme[if @color then @color else 'white'].text}"
-
       # ':host(:focus)':
       #   opacity: 1
 
       # ':host(:active)':
       #   opacity: 1
 
-      ':host(:disabled)':
+      ':host([bordered])':
+        borderRadius: rem .3
+        padding: theme.padding.small
+        border: "1px solid #{theme[if @color then @color else 'white'].text}"
+
+      ':host(:disabled), :host([disabled]), :host(.disabled)':
         pointerEvents: none
         opacity: important .3
 
@@ -138,10 +146,92 @@ York.TextView = Class 'TextView',
         borderColor: transparent
         borderTopColor: inherit
 
+      ':host([type="input"])':
+        width: em 20
+        height: if @editor? then @editor.renderer.lineHeight + 'px' else '2px'
+
+      '.ace_editor':
+        width: '100%'
+        height: '100%'
+
+      ':host([type="input"]) .ace_content':
+        width: '100%'
+        height: '100%'
+
+
     template: renderable (el, content) ->
-      if _.isString el.icon
-        icon_view el.icon
-      span el.textContent
+      if el.type == 'label'
+        if _.isString el.icon
+          icon_view el.icon
+        span el.textContent
+
+      else if el.type == 'input'
+        div el.textContent
+
+
+  created: ->
+    @super()
+    @type = 'label'
+
+
+  attached: ->
+    @super()
+
+    if @type == 'input' or @type == 'edit'
+      editor = ace.edit @_el
+      @editor = editor
+      editor.setBehavioursEnabled(true)
+
+      editor.on 'click', (e) ->
+        e.stop()
+
+      aei = setInterval ->
+        el = document.getElementById('ace_editor.css')
+        if el
+          clearInterval aei
+          s = el.innerHTML.replace new RegExp("(.ace[_-][^{,]+)", 'gim'), "body /deep/ $1"
+          el.innerHTML = s
+          editor.setTheme 'ace/theme/monokai'
+          themeId = "ace-#{_.last(editor.getTheme().split('/'))}"
+          tmi = setInterval ->
+            el = document.querySelector('head #' + themeId)
+            if el
+              clearInterval tmi
+              s = el.innerHTML.replace new RegExp("(.ace[_-][^{,]+)", 'gim'), "body /deep/ $1"
+              # s = el.innerHTML.replace new RegExp(".#{themeId}", 'gim'), "body /deep/ .#{themeId}"
+              el.innerHTML = s
+          , 10
+      , 10
+
+      ati = setInterval ->
+        el = document.querySelector('head #ace-tm')
+        if el
+          clearInterval ati
+          s = el.innerHTML.replace new RegExp("(.ace[_-][^{,]+)", 'gim'), "body /deep/ $1"
+          # s = el.innerHTML.replace new RegExp(".ace-tm", 'gim'), "body /deep/ .ace-tm"
+          el.innerHTML = s
+      , 10
+
+      # # editor.renderer.on 'themeChange', (e) ->
+      # #   themeId = "ace-#{_.last(e.theme.split('/'))}"
+
+      if @type == 'input'
+        editor.setOptions({maxLines: 1})
+        editor.setDisplayIndentGuides(false)
+        editor.setHighlightActiveLine(false)
+        editor.setWrapBehavioursEnabled(false)
+        editor.renderer.setShowGutter(false)
+        editor.renderer.setShowPrintMargin(false)
+        editor.getSession().setTabSize(2)
+        editor.getSession().setUseSoftTabs(true)
+        editor.resize()
+
+        # editor.on 'change', (e) ->
+        #   if e.data.action == 'insertText' and e.data.text == editor.getNewLineCharacter()
+        #     console.log "YES"
+        #   console.log e
+
+      # editor.getSession().setMode 'ace/mode/javascript'
 
 
 module.exports =

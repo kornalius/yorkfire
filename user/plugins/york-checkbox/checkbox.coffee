@@ -6,7 +6,7 @@ York.CheckboxView = Class 'CheckboxView',
 
   layout:
 
-    attributes: ['type', 'fitted', 'color', 'checked', 'on-click']
+    attributes: ['type', 'fitted', 'color', 'checked', 'disabled', 'on-click']
 
     style: ->
 
@@ -69,20 +69,20 @@ York.CheckboxView = Class 'CheckboxView',
       ':host([type="checkbox"]) .label:active':
         color: rgba(0, 0, 0, .8)
 
-      # ':host([type="checkbox"]) .label:focus:before':
-      #   background: '#f5f5f5'
-      #   border: '1px solid 1px solid rgba(39, 41, 43, .4)'
+      ':host([type="checkbox"]) .label:focus:before':
+        background: '#f5f5f5'
+        border: '1px solid 1px solid rgba(39, 41, 43, .4)'
 
-      # ':host([type="checkbox"]) .label:focus':
-      #   color: rgba(0, 0, 0, .8)
+      ':host([type="checkbox"]) .label:focus':
+        color: rgba(0, 0, 0, .8)
 
-      # ':host([disabled]) .label:before, :host(:disabled) .label:before, :host([disabled]) .label:before':
-      #   opacity: .5
-      #   color: '#000000'
+      ':host([disabled]) .label:before, :host(:disabled) .label:before':
+        opacity: .5
+        color: '#000000'
 
-      # ':host([disabled]) .label, :host(:disabled) .label, :host([disabled]) .label':
-      #   opacity: .5
-      #   color: '#000000'
+      ':host([disabled]) .label, :host(:disabled) .label, :host([disabled]) .label':
+        opacity: .5
+        color: '#000000'
 
       # ':host([type="radio"])':
       #   minHeight: px 14
@@ -195,12 +195,19 @@ York.CheckboxView = Class 'CheckboxView',
       text_view '.label', el.textContent
 
 
+  created: ->
+    @super()
+    @type = 'checkbox'
+
   attached: ->
-    @setAttribute('checked', false)
+    @super()
+    @attr 'checked', false
+
     $(@).on 'click', (e) ->
-      console.log "CHECKBOX", e.currentTarget, e.currentTarget.getAttribute('checked')
-      e.currentTarget.setAttribute('checked', if e.currentTarget.getAttribute('checked') == 'true' then false else true)
-      e.stopPropagation()
+      if !e.currentTarget.disabled
+        console.log "CHECKBOX", e.currentTarget, e.currentTarget.checked
+        e.currentTarget.attr('checked', if e.currentTarget.attr('checked') == 'true' then false else true)
+        e.stopPropagation()
 
 
 module.exports =

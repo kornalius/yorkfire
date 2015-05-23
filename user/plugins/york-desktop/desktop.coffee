@@ -33,7 +33,8 @@ York.DesktopView = Class 'DesktopView',
         text_view '#text', 'DESKTOP 2'
         text_view '#text', bordered: 'black', 'DESKTOP 3'
         icon_view color: 'blue', circular: true, 'picture'
-        checkbox_view '#checkbox', type: 'checkbox', 'Check this box'
+        checkbox_view '#checkbox', 'Check this box'
+        text_view '#input_test', type: 'input', 'Text content to be edited'
 
 
   '@click': (e) ->

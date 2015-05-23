@@ -6,6 +6,7 @@ York.SelectBehavior = Class 'SelectBehavior',
   constructor: ->
     @super()
 
+
   layout:
 
     attributes: ['selected']
@@ -14,6 +15,7 @@ York.SelectBehavior = Class 'SelectBehavior',
       ':host(.selected)':
         backgroundColor: theme.selection.color
         color: theme.selection.text
+
 
   '@click': (e) ->
     console.log 'selected', e
@@ -28,7 +30,7 @@ York.SelectBehavior = Class 'SelectBehavior',
     @select(!@selected)
 
   onSelect: ->
-    $(@).addClass('selected')
+    @addClass 'selected'
 
   onDeselect: ->
-    $(@).removeClass('selected')
+    @removeClass 'selected'

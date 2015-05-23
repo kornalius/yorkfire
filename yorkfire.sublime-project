@@ -4,27 +4,20 @@
 		{
 			"file_exclude_patterns":
 			[
-				// ".gitignore",
 				"LICENSE",
-				// "README.md",
 				"yorkfire.sublime-project",
 				"yorkfire.sublime-workspace",
 				".bowerrc",
 				".jshintrc",
-				"coffeelint.json",
-				// "LICENSE.md"
+				"coffeelint.json"
 			],
 			"folder_exclude_patterns":
 			[
 				"spec",
-				"static",
 				"vendor",
 				"atom-shell",
-				// "build",
 				"script",
-				// "node_modules",
-				"apm",
-				"react-devtools"
+				"apm"
 			],
 			"path": "."
 		}
