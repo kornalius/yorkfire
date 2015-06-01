@@ -27,14 +27,19 @@ York.DesktopView = Class 'DesktopView',
         # margin: '16px'
 
 
-    template: renderable (el) ->
-      div ->
-        text_view '#text', tag: true, color: 'purple', attach: 'bottom',  'DESKTOP 1'
-        text_view '#text', 'DESKTOP 2'
-        text_view '#text', bordered: 'black', 'DESKTOP 3'
-        icon_view color: 'blue', circular: true, 'picture'
-        checkbox_view '#checkbox', 'Check this box'
-        text_view '#input_test', type: 'input', 'Text content to be edited'
+    template: renderable ->
+      div =>
+
+        div =>
+          text_view '#text', tag: true, color: 'purple', attach: 'bottom',  'DESKTOP 1'
+          text_view '#text', 'DESKTOP 2'
+          text_view '#text', bordered: 'black', 'DESKTOP 3'
+          icon_view color: 'blue', circular: true, 'picture'
+          checkbox_view '#checkbox', 'Check this box'
+          checkbox_view '#radiobutton', type: 'radio', 'Radio button'
+          checkbox_view '#togglebutton', type: 'toggle', 'Toggle'
+          text_view '#input_test', type: 'input', 'Text content to be edited'
+          text_view '#edit_test', type: 'edit', 'Text content to be edited'
 
 
   '@click': (e) ->

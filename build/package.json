@@ -1,17 +1,10 @@
 {
-  "name": "yorkfire",
-  "description": "",
+  "name": "eightoheight-build",
+  "description": "Electron Sample App Build",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kornalius/yorkfire.git"
+    "url": "https://github.com/atom/electron-starter.git"
   },
-  "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/kornalius/yorkfire/LICENSE.md"
-    }
-  ],
   "dependencies": {
     "asar": "^0.4.0",
     "async": "~0.2.9",

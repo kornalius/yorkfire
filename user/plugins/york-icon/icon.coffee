@@ -85,8 +85,8 @@ York.IconView = Class 'IconView',
         fontSize: em 2
 
 
-    template: renderable (el, content) ->
-      i ".cic.cic-#{el.textContent}"
+    template: renderable ->
+      i ".cic.cic-#{@textContent}"
 
 
 module.exports =

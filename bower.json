@@ -15,7 +15,5 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "ace": "~1.1.9"
-  }
+  "dependencies": {}
 }

@@ -6,7 +6,7 @@ York.ButtonView = Class 'ButtonView',
 
   layout:
 
-    attributes: ['icon', 'small', 'large', 'color', 'on-click']
+    attributes: ['icon', 'small', 'large', 'color', 'disabled', 'on-click']
 
     style: ->
 
@@ -66,7 +66,7 @@ York.ButtonView = Class 'ButtonView',
         backgroundImage: none
         color: rgba(0, 0, 0, .8)
 
-      ':host(:disabled), :host(.disabled), :host([disabled])':
+      ':host([disabled])':
         cursor: 'default'
         backgroundColor: important '#dcddde'
         color: important rgba(0, 0, 0, .4)
@@ -84,10 +84,10 @@ York.ButtonView = Class 'ButtonView',
       'label-view':
         color: inherit
 
-    template: renderable (el, content) ->
-      if _.isString el.icon
-        icon_view icon: el.icon
-      text_view el.textContent
+    template: renderable ->
+      if _.isString @icon
+        icon_view icon: @icon
+      text_view @textContent
 
 
 module.exports =

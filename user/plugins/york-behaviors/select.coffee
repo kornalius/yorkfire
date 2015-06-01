@@ -22,7 +22,7 @@ York.SelectBehavior = Class 'SelectBehavior',
     @toggleSelect()
 
   select: (selected) ->
-    if selected != @selected
+    if selected != @selected and @isEnabled()
       @selected = selected
       if selected then @onSelect() else @onDeselect()
 

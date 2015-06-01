@@ -49,6 +49,7 @@ if !window.York?
       module: p.dirname(module.filename)
       node_modules: p.join(userPath, 'node_modules')
       user_pkg: p.join(userPath, 'package.json')
+      components: './static/components'
     fs: r.require('fs-plus')
     path: p
     cson: require 'cson-parser'
@@ -172,155 +173,157 @@ York.settings.load (err) ->
   # York.settings.set 'test', 'something', true
 
 
-# { $, hazel, BaseView, renderable, span, div, text, input, label } = York
+{ $, hazel, BaseView, renderable, span, div, text, input, label } = York
 
-# # window.onbeforeunload = (e) ->
-# #   console.log 'I do not want to be closed'
-# #   return false
+# window.onbeforeunload = (e) ->
+#   console.log 'I do not want to be closed'
+#   return false
 
-# # window.onblur = (e) ->
-# #   console.log 'blur'
+# window.onblur = (e) ->
+#   console.log 'blur'
 
-# # window.onfocus = (e) ->
-# #   console.log 'focus'
+# window.onfocus = (e) ->
+#   console.log 'focus'
 
-# BaseElement = Class 'BaseElement',
-#   extends: BaseView
+BaseElement = Class 'BaseElement',
+  extends: BaseView
 
-#   created: ->
-#     console.log "BaseElement.constructor"
-#     @super()
+  created: ->
+    console.log "BaseElement.constructor"
+    @super()
 
-#   layout:
+  layout:
 
-#     style: ->
-#       ':host':
-#         'display': 'inline-block'
-#         'cursor': 'default'
-#       'div':
-#         'background-color': 'orange'
-#         padding: '2px'
+    style: ->
+      ':host':
+        'display': 'inline-block'
+        'cursor': 'default'
+      'div':
+        'background-color': 'orange'
+        padding: '2px'
 
-#     template: renderable (el) ->
-#       div ->
-#         span "component #{el.tagName}"
+    template: renderable ->
+      console.log "template", @
+      div =>
+        console.log "   template", @
+        span "component #{@$tagName()}"
 
-#   method0: ->
-#     console.log 'method0', @
+  method0: ->
+    console.log 'method0', @
 
-#   '@click': (e) ->
-#     console.log 'clicked base-element', @
-
-
-# MyBaseElement = Class 'MyBaseElement',
-#   extends: BaseElement
-
-#   created: ->
-#     console.log "MyBaseElement.constructor"
-#     @super()
-
-#   layout:
-
-#     style: ->
-#       ':host':
-#         'background-color': 'blue'
-#         'color': 'white'
-#         margin: '4px'
-#         padding: '4px'
-
-#     # template: renderable (el) ->
-#     #   div ->
-#     #     span "component #{el.tagName}"
-
-#   method0: ->
-#     @super()
-#     console.log 'method0.1', @
-
-#   method1: ->
-#     console.log 'method1', @
-
-#   '@click span': (e) ->
-#     console.log 'clicked span for my-base-element', @
-#     e.stop()
+  '@click': (e) ->
+    console.log 'clicked base-element', @
 
 
-# MyElement = Class 'MyElement',
-#   extends: MyBaseElement
+MyBaseElement = Class 'MyBaseElement',
+  extends: BaseElement
 
-#   created: ->
-#     console.log "MyElement.constructor"
-#     @super()
+  created: ->
+    console.log "MyBaseElement.constructor"
+    @super()
 
-#   layout:
+  layout:
 
-#     style: ->
-#       ':host':
-#         'background-color': 'red'
-#         margin: '4px'
-#         padding: '8px'
-#         'border-radius': '4px'
-#       '#my-input':
-#         'margin': '4px 8px'
-#         'background-color': 'yellow'
+    style: ->
+      ':host':
+        'background-color': 'blue'
+        'color': 'white'
+        margin: '4px'
+        padding: '4px'
 
-#     template: renderable (el) ->
-#       div ->
-#         div ->
-#           input '#my-input.my-class', type: 'text', bind: 'inputValue'
-#         div ->
-#           input '#my-check.my-class', type: 'checkbox', bind: 'checkValue'
-#           label 'Check'
-#         div ->
-#           text "#{el.$$?.myInput?.value}, #{el.inputValue}"
-#         div ->
-#           text "#{el.$$?.myCheck?.checked}, #{el.checkValue}"
+    # template: renderable ->
+    #   div =>
+    #     span "component #{@$tagName()}"
 
-#   attached: ->
-#     @idValue = @querySelector(":root /deep/ #my-input")
+  method0: ->
+    @super()
+    console.log 'method0.1', @
 
-#   $inputValue: 'something'
+  method1: ->
+    console.log 'method1', @
 
-#   $checkValue: false
-
-#   method0: ->
-#     @super()
-#     console.log 'method0.2', @
-
-#   method1: ->
-#     console.log 'method1', @
-
-#   method2: ->
-#     console.log 'method2', @
-
-#   '@click': null
-
-#   '@click span': (e) ->
-#     console.log 'clicked span for my-element', @
-
-#   '@change #my-input': (e) ->
-#     console.log 'changed', @value
+  '@click span': (e) ->
+    console.log 'clicked span for my-base-element', @
+    e.stop()
 
 
-# hazel 'base-element', BaseElement
-# hazel 'my-base-element', MyBaseElement
-# hazel 'my-element', MyElement
+MyElement = Class 'MyElement',
+  extends: MyBaseElement
+
+  created: ->
+    console.log "MyElement.constructor"
+    @super()
+
+  layout:
+
+    style: ->
+      ':host':
+        'background-color': 'red'
+        margin: '4px'
+        padding: '8px'
+        'border-radius': '4px'
+      '#my-input':
+        'margin': '4px 8px'
+        'background-color': 'yellow'
+
+    template: renderable ->
+      div =>
+        div =>
+          input '#my-input.my-class', type: 'text', bind: 'inputValue'
+        div =>
+          input '#my-check.my-class', type: 'checkbox', bind: 'checkValue'
+          label 'Check'
+        div =>
+          text "#{@$$?.myInput?.value}, #{@inputValue}"
+        div =>
+          text "#{@$$?.myCheck?.checked}, #{@checkValue}"
+
+  attached: ->
+    @idValue = @querySelector(":root /deep/ #my-input")
+
+  $inputValue: 'something'
+
+  $checkValue: false
+
+  method0: ->
+    @super()
+    console.log 'method0.2', @
+
+  method1: ->
+    console.log 'method1', @
+
+  method2: ->
+    console.log 'method2', @
+
+  '@click': null
+
+  '@click span': (e) ->
+    console.log 'clicked span for my-element', @
+
+  '@change #my-input': (e) ->
+    console.log 'changed', @value
 
 
-# el = document.createElement('my-element')
-# document.querySelector('body').appendChild(el)
-# el.method0()
-# el.method1()
-# el.method2()
+hazel 'base-element', BaseElement
+hazel 'my-base-element', MyBaseElement
+hazel 'my-element', MyElement
 
-# el = document.createElement('my-base-element')
-# document.querySelector('body').appendChild(el)
-# el.method0()
-# el.method1()
 
-# el = document.createElement('base-element')
-# document.querySelector('body').appendChild(el)
-# el.method0()
+el = document.createElement('my-element')
+document.querySelector('body').appendChild(el)
+el.method0()
+el.method1()
+el.method2()
 
-# # console.log $('my-element, my-base-element, base-element')
+el = document.createElement('my-base-element')
+document.querySelector('body').appendChild(el)
+el.method0()
+el.method1()
 
-# # console.log York.b(true)
+el = document.createElement('base-element')
+document.querySelector('body').appendChild(el)
+el.method0()
+
+# console.log $('my-element, my-base-element, base-element')
+
+# console.log York.b(true)

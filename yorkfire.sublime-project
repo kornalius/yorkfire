@@ -9,6 +9,7 @@
 				"yorkfire.sublime-workspace",
 				".bowerrc",
 				".jshintrc",
+				".gitignore",
 				"coffeelint.json"
 			],
 			"folder_exclude_patterns":
@@ -16,8 +17,9 @@
 				"spec",
 				"vendor",
 				"atom-shell",
-				"script",
-				"apm"
+				"apm",
+				"_CCC SafetyNet",
+				"concepts"
 			],
 			"path": "."
 		}

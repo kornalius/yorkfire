@@ -1,5 +1,5 @@
-{ Text, t, hazel, BaseView, Class, Plugin, expose, unexpose, theme, renderable, div, span, text } = York
-{ important, none, auto, inherit, absolute, baseline, relative, left, solid, transparent, rgba, em, rem } = York.css
+{ Text, t, hazel, BaseView, Class, Plugin, expose, unexpose, theme, renderable, div, span, textarea } = York
+{ important, none, auto, inherit, absolute, middle, baseline, relative, left, solid, transparent, rgba, em, rem, px } = York.css
 
 
 York.TextView = Class 'TextView',
@@ -10,7 +10,7 @@ York.TextView = Class 'TextView',
     # type = label, input, edit
     # attach = left, right, top, bottom
     # ribbon = left, right, top, bottom
-    attributes: ['icon', 'type', 'attach', 'ribbon', 'bordered', 'tag', 'color', 'disabled']
+    attributes: ['icon', 'type', 'attach', 'ribbon', 'bordered', 'tag', 'color', 'disabled', 'readonly']
 
     style: ->
 
@@ -146,27 +146,43 @@ York.TextView = Class 'TextView',
         borderColor: transparent
         borderTopColor: inherit
 
+      ':host([type="input"][type="edit"])':
+        WebkitTransition: none
+        transition: none
+
       ':host([type="input"])':
+        verticalAlign: middle
+
+      ':host([type="input"]) .CodeMirror':
         width: em 20
-        height: if @editor? then @editor.renderer.lineHeight + 'px' else '2px'
+        height: px 20
 
-      '.ace_editor':
-        width: '100%'
-        height: '100%'
+      ':host([type="input"]) .CodeMirror-hscrollbar':
+        minHeight: important px 8
 
-      ':host([type="input"]) .ace_content':
-        width: '100%'
-        height: '100%'
+      ':host([type="input"]) .CodeMirror-vscrollbar':
+        minWidth: important px 8
+
+      ':host([type="edit"]) .CodeMirror':
+        width: em 50
+        height: em 20
+
+      ':host([type="edit"]) .CodeMirror div.CodeMirror-cursor':
+        borderLeftWidth: important px 8
+        opacity: .85
 
 
-    template: renderable (el, content) ->
-      if el.type == 'label'
-        if _.isString el.icon
-          icon_view el.icon
-        span el.textContent
+    template: renderable ->
+      if @type == 'label'
+        if _.isString @icon
+          icon_view @icon
+        span @textContent
 
-      else if el.type == 'input'
-        div el.textContent
+      else if @type == 'input'
+        textarea @textContent
+
+      else if @type == 'edit'
+        textarea @textContent
 
 
   created: ->
@@ -178,60 +194,102 @@ York.TextView = Class 'TextView',
     @super()
 
     if @type == 'input' or @type == 'edit'
-      editor = ace.edit @_el
-      @editor = editor
-      editor.setBehavioursEnabled(true)
+      if !window.CodeMirror?
+        window.CodeMirror = require('codemirror')
+        require('codemirror/mode/coffeescript/coffeescript')
+        require('codemirror/mode/javascript/javascript')
+        require('codemirror/mode/css/css')
+        require('codemirror/mode/htmlmixed/htmlmixed')
+        require('codemirror/addon/comment/comment')
+        require('codemirror/addon/edit/matchbrackets')
+        require('codemirror/addon/edit/closebrackets')
+        require('codemirror/addon/edit/matchtags')
+        require('codemirror/addon/edit/closetag')
+        require('codemirror/addon/scroll/simplescrollbars')
 
-      editor.on 'click', (e) ->
-        e.stop()
+        fs = require('fs')
+        path = require('path')
 
-      aei = setInterval ->
-        el = document.getElementById('ace_editor.css')
-        if el
-          clearInterval aei
-          s = el.innerHTML.replace new RegExp("(.ace[_-][^{,]+)", 'gim'), "body /deep/ $1"
-          el.innerHTML = s
-          editor.setTheme 'ace/theme/monokai'
-          themeId = "ace-#{_.last(editor.getTheme().split('/'))}"
-          tmi = setInterval ->
-            el = document.querySelector('head #' + themeId)
-            if el
-              clearInterval tmi
-              s = el.innerHTML.replace new RegExp("(.ace[_-][^{,]+)", 'gim'), "body /deep/ $1"
-              # s = el.innerHTML.replace new RegExp(".#{themeId}", 'gim'), "body /deep/ .#{themeId}"
-              el.innerHTML = s
-          , 10
-      , 10
+        el = document.createElement('style')
+        s = fs.readFileSync(path.join(York.dirs.components, 'codemirror/lib/codemirror.css')).toString()
+        s = s.replace new RegExp("(.CodeMirror[^{,]+)", 'gim'), "body /deep/ $1"
+        el.innerHTML = s
+        document.head.appendChild(el)
 
-      ati = setInterval ->
-        el = document.querySelector('head #ace-tm')
-        if el
-          clearInterval ati
-          s = el.innerHTML.replace new RegExp("(.ace[_-][^{,]+)", 'gim'), "body /deep/ $1"
-          # s = el.innerHTML.replace new RegExp(".ace-tm", 'gim'), "body /deep/ .ace-tm"
-          el.innerHTML = s
-      , 10
+        el = document.createElement('style')
+        s = fs.readFileSync(path.join(York.dirs.components, 'codemirror/addon/scroll/simplescrollbars.css')).toString()
+        s = s.replace new RegExp("(.CodeMirror[^{,]+)", 'gim'), "body /deep/ $1"
+        el.innerHTML = s
+        document.head.appendChild(el)
 
-      # # editor.renderer.on 'themeChange', (e) ->
-      # #   themeId = "ace-#{_.last(e.theme.split('/'))}"
+        el = document.createElement('style')
+        s = fs.readFileSync(path.join(York.dirs.components, 'codemirror/theme/monokai.css')).toString()
+        s = s.replace new RegExp("(^.cm-s-[^{,]+)", 'gim'), "body /deep/ $1"
+        el.innerHTML = s
+        document.head.appendChild(el)
+
+      @editor = CodeMirror.fromTextArea(@_el,
+        mode: "text/plain"
+        styleActiveLine: @type == 'edit'
+        lineNumbers: @type == 'edit'
+        firstLineNumber: 1
+        lineWrapping: @type == 'edit'
+        # scrollbarStyle: 'simple'
+        readOnly: @readonly
+        lineWiseCopyCut: true
+        # moveInputWithCursor: true
+        # pollInterval: 100
+        disableInput: @disabled
+        # resetSelectionOnContextMenu: false
+        # maxHighlightLength: 10000
+        showCursorWhenSelecting: true
+        # singleCursorHeightPerLine: true
+        # cursorHeight: 16
+        cursorBlinkRate: 500
+        # workTime: 100
+        # workDelay: 50
+        dragDrop: @type == 'edit'
+        fixedGutter: true
+        # coverGutterNextToScrollbar: true
+        # cursorScrollMargin: 2
+        # tabindex: if @type == 'input' then -1 else -1
+        # placeholder: ''
+        autofocus: false
+        # flattenSpans: true
+        # addModeClass: false
+        # maxHighlightLength: 0
+        # wholeLineUpdateBefore: false
+        # historyEventDelay: 100
+        # viewportMargin: 10
+        tabSize: 2
+        smartIndent: true
+        # indentUnit: 2
+        indentWithTabs: false
+        theme: if @type == 'edit' then 'monokai' else ''
+        # keyMap: 'sublime'
+        extraKeys:
+
+          Tab: if @type == 'input' then (cm) ->
+            el = cm.getTextArea().parentNode.host
+            setTimeout ->
+              cm.display.cursorDiv.style.visibility = 'hidden'
+            next = el
+            while next = next.nextSibling
+              if !next?
+                break
+              else if next.editor?
+                setTimeout ->
+                  next.editor.focus()
+                break
+      )
+
+      @addEventListener 'click', (e) ->
+        e.stopPropagation()
 
       if @type == 'input'
-        editor.setOptions({maxLines: 1})
-        editor.setDisplayIndentGuides(false)
-        editor.setHighlightActiveLine(false)
-        editor.setWrapBehavioursEnabled(false)
-        editor.renderer.setShowGutter(false)
-        editor.renderer.setShowPrintMargin(false)
-        editor.getSession().setTabSize(2)
-        editor.getSession().setUseSoftTabs(true)
-        editor.resize()
-
-        # editor.on 'change', (e) ->
-        #   if e.data.action == 'insertText' and e.data.text == editor.getNewLineCharacter()
-        #     console.log "YES"
-        #   console.log e
-
-      # editor.getSession().setMode 'ace/mode/javascript'
+        @editor.on 'beforeChange', (cm, e) ->
+          if e.text.length == 2
+            e.cancel()
 
 
 module.exports =
