@@ -6,7 +6,7 @@ app = remote.require 'app'
 @pkgJson = require 'package.json'
 
 # Start the crash reporter before anything else.
-require('crash-reporter').start(productName: @pkgJson.name, companyName: 'atom-shell-starter')
+# require('crash-reporter').start(productName: @pkgJson.name, companyName: 'atom-shell-starter')
 specRootPath = path.resolve(global.loadSettings.resourcePath, 'spec/')
 
 if global.loadSettings.exitWhenDone

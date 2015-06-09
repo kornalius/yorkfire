@@ -1,6 +1,6 @@
 TaskPanel = require('./task-panel.coffee')
 
-{ hazel, BaseView, Class, Plugin, css, expose, unexpose, renderable, theme, div, span } = York
+{ hazel, BaseView, Class, Plugin, css, expose, unexpose, renderable, component, theme, div, span } = York
 { block, absolute  } = css
 
 York.DesktopView = Class 'DesktopView',
@@ -40,6 +40,10 @@ York.DesktopView = Class 'DesktopView',
           checkbox_view '#togglebutton', type: 'toggle', 'Toggle'
           text_view '#input_test', type: 'input', 'Text content to be edited'
           text_view '#edit_test', type: 'edit', 'Text content to be edited'
+
+        list_view (model, index) =>
+          div =>
+            span "#{index} #{model.name}"
 
 
   '@click': (e) ->

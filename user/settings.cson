@@ -5,4 +5,5 @@ plugins:
   "york-checkbox": true
   "york-button": true
   "york-icon": true
+  "york-list": true
   "york-desktop": true

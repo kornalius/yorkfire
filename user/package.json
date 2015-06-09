@@ -9,6 +9,7 @@
     "york-checkbox": "./plugins/",
     "york-button": "./plugins/",
     "york-icon": "./plugins/",
+    "york-list": "./plugins/",
     "york-desktop": "./plugins/"
   }
 }
