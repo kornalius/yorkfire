@@ -1,5 +1,5 @@
-{ hazel, BaseView, Class, Plugin, expose, unexpose, theme, contents, renderable, color, div, span } = York
-{ important, none, baseline, inherit, auto, normal, center, transparent, rgba, em, rem } = York.css
+{ hazel, BaseView, Class, Plugin, expose, unexpose, theme, contents, renderable, color, div, span, text } = York
+{ important, auto, none, block, middle, absolute, baseline, inherit, auto, normal, center, transparent, rgba, px, em, rem } = York.css
 
 York.ListView = Class 'ListView',
   extends: BaseView
@@ -15,7 +15,8 @@ York.ListView = Class 'ListView',
         display: 'inline-block'
         minWidth: em 5
         minHeight: em 4
-        height: em 4
+        width: em 10
+        height: em 20
         outline: none
         border: "1px solid #{theme[if @color? then @color else 'grey'].color}"
         verticalAlign: baseline
@@ -55,24 +56,42 @@ York.ListView = Class 'ListView',
         opacity: important .3
         pointerEvents: none
 
+      '.topspacer':
+        width: '100%'
+
+      '.listitem':
+        height: px @itemSize
+
 
     template: renderable (content) ->
-      div '#viewport', =>
-        if content?
-          index = 0
-          for model in @model
-            content.call(@, model, index++)
+      div '#viewport', layout: true, vertical: true, =>
+        if @model?
+          div '.topspacer', style: "height: #{@vTop * @itemSize}px"
+          for i in [@vTop..@vBottom]
+            div '.listitem', layout: true, vertical: true, 'center-center': true, model: @model[i], index: i, "#{i}"
+
+        # if content?
+        #   index = 0
+        #   for model in @model
+        #     content.call(@, model, index++)
 
 
   created: ->
-    @vStart = 0
-    @vEnd = 0
-    @size = 14
-    @overflowItems = 4
-    @elements = []
+    @super()
+    @itemSize = 32
+    @viewportExpand = @itemSize * 2
+    @_oldScrollTop = NaN
+    @pTop = 0
+    @pBottom = 0
+    @pHeight = 0
+    @vTop = 0
+    @vBottom = 0
+    @_oldVTop = NaN
+    @_timer = null
 
 
   ready: ->
+    @super()
     if !@model?
       @model = []
     for i in [0..250]
@@ -90,24 +109,27 @@ York.ListView = Class 'ListView',
 
 
   attached: ->
-    @elements.length = Math.trunc(@offsetHeight / @size)
-    y = 0
-    for i in [0...@elements.length]
-      el = document.createElement('div')
-      el.style.width = '50%'
-      el.style.height = "#{@size}px"
-      el.style.display = 'block'
-      el.style.position = 'absolute'
-      el.style.top = "#{y}px"
-      el.style.left = "0px"
-      el.style.backgroundColor = color().rgb(y / 100 * 255, 100, 100).hexString()
-      @_viewport.appendChild(el)
-      y += @size
+    @super()
+    @viewport$.style.height = "#{@model.length * @itemSize}px"
+    @updateItems()
+
+
+  updateItems: ->
+    t = @scrollTop
+    if t != @_oldScrollTop
+      @_oldScrollTop = t
+      @pTop = t - @viewportExpand
+      @pBottom = t + @offsetHeight + @viewportExpand
+      @pHeight = @pBottom - @pTop
+      @vTop = Math.max(Math.trunc(@pTop / @itemSize), 0)
+      @vBottom = Math.min(Math.trunc(@pBottom / @itemSize), @model.length - 1)
+      if @vTop != @_oldVTop
+        @_oldVTop = @vTop
+        @refresh()
 
 
   '@scroll': (e) ->
-    @vStart = Math.trunc(@scrollTop / @size)
-    console.log @, @vStart
+    @updateItems()
 
 
 module.exports =

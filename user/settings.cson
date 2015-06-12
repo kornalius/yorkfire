@@ -1,4 +1,5 @@
 plugins:
+  "york-flex": true
   "york-default-theme": true
   "york-behaviors": true
   "york-text": true
