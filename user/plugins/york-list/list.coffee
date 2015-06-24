@@ -1,5 +1,5 @@
-{ hazel, BaseView, Class, Plugin, expose, unexpose, theme, contents, renderable, color, div, span, text } = York
-{ important, auto, none, block, middle, absolute, baseline, inherit, auto, normal, center, transparent, rgba, px, em, rem } = York.css
+{ BaseView, Class, Plugin, expose, unexpose } = York
+
 
 York.ListView = Class 'ListView',
   extends: BaseView
@@ -8,77 +8,16 @@ York.ListView = Class 'ListView',
 
     attributes: ['model', 'color', 'disabled', 'allowSelection', 'multi', 'type']
 
-    style: ->
-
-      ':host':
-        cursor: 'default'
-        display: 'inline-block'
-        minWidth: em 5
-        minHeight: em 4
-        width: em 10
-        height: em 20
-        outline: none
-        border: "1px solid #{theme[if @color? then @color else 'grey'].color}"
-        verticalAlign: baseline
-        padding: em .5
-        textTransform: none
-        textShadow: none
-        fontWeight: normal
-        fontStyle: normal
-        lineHeight: 1
-        textDecoration: none
-        backgroundImage: none
-        WebkitUserSelect: none
-        userSelect: none
-        overflow: auto
-        # WebkitTransition: 'opacity .1s ease, background-color .1s ease, color .1s ease, box-shadow .1s ease, background .1s ease'
-        # transition: 'opacity .1s ease, background-color .1s ease, color .1s ease, box-shadow .1s ease, background .1s ease'
-        willChange: none
-        WebkitTapHighlightColor: transparent
-        # boxShadow: '0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(39, 41, 43, .15) inset'
-        backgroundColor: theme[if @color? then @color else 'white'].color
-        color: theme[if @color? then @color else 'white'].text
-
-      ':host(:hover)':
-        borderColor: rgba 0, 0, 0, .5
-
-      ':host(:focus)':
-        borderColor: rgba 0, 0, 0, .5
-
-      # ':host(:active), :host(.active), :host([active])':
-
-      # ':host(:active:hover), :host(.active:hover), :host([active]):hover':
-
-      ':host([disabled])':
-        cursor: 'default'
-        backgroundColor: important '#dcddde'
-        color: important rgba(0, 0, 0, .4)
-        opacity: important .3
-        pointerEvents: none
-
-      '.topspacer':
-        width: '100%'
-
-      '.listitem':
-        height: px @itemSize
-
-
-    template: renderable (content) ->
-      div '#viewport', layout: true, vertical: true, =>
-        if @model?
-          div '.topspacer', style: "height: #{@vTop * @itemSize}px"
-          for i in [@vTop..@vBottom]
-            div '.listitem', layout: true, vertical: true, 'center-center': true, model: @model[i], index: i, "#{i}"
-
-        # if content?
-        #   index = 0
-        #   for model in @model
-        #     content.call(@, model, index++)
+    template: (content) ->
+      # if @model?
+      #   div '.topspacer', style: "height: #{@vTop * @itemSize}px"
+      #   for i in [@vTop..@vBottom]
+      #     div '.listitem', layout: true, vertical: true, 'center-center': true, model: @model[i], index: i, "#{i}"
 
 
   created: ->
     @super()
-    @itemSize = 32
+    @itemSize = 1
     @viewportExpand = @itemSize * 2
     @_oldScrollTop = NaN
     @pTop = 0
@@ -128,13 +67,13 @@ York.ListView = Class 'ListView',
         @refresh()
 
 
-  '@scroll': (e) ->
-    @updateItems()
+  # '@scroll': (e) ->
+    # @updateItems()
 
 
 module.exports =
 
   load: ->
-    hazel 'list-view', York.ListView
+    # hazel 'list-view', York.ListView
 
   unload: ->

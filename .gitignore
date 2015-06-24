@@ -27,6 +27,8 @@ node_modules
 atom-shell
 hazel
 kaffa
+chicory
+silverskin
 
 # Users Environment Variables
 .lock-wscript

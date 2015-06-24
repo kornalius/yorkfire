@@ -19,7 +19,10 @@
 				"atom-shell",
 				"apm",
 				"_CCC SafetyNet",
-				"concepts"
+				"concepts",
+				"script",
+				"resources",
+				"build"
 			],
 			"path": "."
 		}
