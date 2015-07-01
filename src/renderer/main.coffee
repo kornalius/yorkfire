@@ -51,6 +51,7 @@ if !window.York?
       node_modules: p.join(userPath, 'node_modules')
       user_pkg: p.join(userPath, 'package.json')
       components: './static/components'
+    async: require 'async'
     fs: r.require('fs-plus')
     path: p
     cson: require 'cson-parser'
@@ -78,30 +79,30 @@ if !window.York?
     Kaffa
 
 
-{ fsdb } = Chicory
+# { fsdb } = Chicory
 
-fsdb.db.info().then((info) ->
-  console.log "fsdb:", info
-)
+# fsdb.db.info().then((info) ->
+#   console.log "fsdb:", info
+# )
 
-fsdb.write('/My Documents/Alain Deschênes', { name: 'Alain Deschênes', age: 41, address: '8236 2nd avenue' }, (err, doc) ->
-  if !err
-    console.log doc
-    fsdb.write('/My Documents/Mélissa Dubé', { name: 'Mélissa Dubé', age: 36, address: '937 road st.' }, (err, doc) ->
-      if !err
-        console.log doc
-        fsdb.dir('/my documents/', (err, docs) ->
-          if !err
-            console.log docs
-          else
-            console.log err
-        )
-      else
-        console.log err
-    )
-  else
-    console.log err
-)
+# fsdb.write('/My Documents/Alain Deschênes', { name: 'Alain Deschênes', age: 41, address: '8236 2nd avenue' }, (err, doc) ->
+#   if !err
+#     console.log doc
+#     fsdb.write('/My Documents/Mélissa Dubé', { name: 'Mélissa Dubé', age: 36, address: '937 road st.' }, (err, doc) ->
+#       if !err
+#         console.log doc
+#         fsdb.dir('/my documents/', (err, docs) ->
+#           if !err
+#             console.log docs
+#           else
+#             console.log err
+#         )
+#       else
+#         console.log err
+#     )
+#   else
+#     console.log err
+# )
 
 
 # i = 0
@@ -209,13 +210,6 @@ app.on 'before-quit', ->
 York.settings.load (err) ->
   # York.plugins.install ['async'], (err) ->
   York.plugins.load()
-
-  tx = York.t("  Testing  ")
-  console.log tx.trim('l')
-
-  $('desktop-view')[0].shadowRoot.appendChild($('<button-view color="red" on-click="York.plugins.unload(\'york-desktop\')">unload desktop</button-view>')[0])
-
-  $('desktop-view')[0].shadowRoot.appendChild($('<button-view color="transparent-black" on-click="$(\'desktop-view\')[0].toggleSelect(); console.log(\'button clicked\'); event.stopPropagation();">toggle select</button-view>')[0])
 
   console.log York
 

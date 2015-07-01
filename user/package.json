@@ -4,13 +4,10 @@
   "dependencies": {
     "async": "^0.9.0",
     "york-flex": "./plugins/",
-    "york-default-theme": "./plugins/",
     "york-behaviors": "./plugins/",
+    "york-terminal": "./plugins/",
     "york-text": "./plugins/",
-    "york-checkbox": "./plugins/",
-    "york-button": "./plugins/",
-    "york-icon": "./plugins/",
-    "york-list": "./plugins/",
+    "york-window": "./plugins/",
     "york-desktop": "./plugins/"
   }
 }

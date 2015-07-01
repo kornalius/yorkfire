@@ -1,16 +1,16 @@
 {
-  "name": "york-text",
+  "name": "york-terminal",
   "version": "0.0.1",
-  "description": "additional text class methods",
-  "main": "text.coffee",
+  "description": "additional terminal class methods",
+  "main": "terminal.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "text"
+    "terminal"
   ],
   "dependencies": {
-    "event-kit": "^1.2.0"
+    "term.js": "git+https://github.com/kornalius/term.js.git"
   },
   "author": "Alain Deschenes <arianesoftinc@gmail.com>",
   "license": "MIT"

@@ -1,0 +1,15 @@
+.git
+.gitignore
+.jshintrc
+coffeelint.json
+license.md
+.bowerrc
+atom-shell
+apm
+build
+concepts
+menus
+resources
+script
+spec
+vendor

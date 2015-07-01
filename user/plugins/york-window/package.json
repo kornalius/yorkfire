@@ -1,17 +1,14 @@
 {
-  "name": "york-text",
+  "name": "york-window",
   "version": "0.0.1",
-  "description": "additional text class methods",
-  "main": "text.coffee",
+  "description": "additional window class methods",
+  "main": "window.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "text"
+    "window"
   ],
-  "dependencies": {
-    "event-kit": "^1.2.0"
-  },
   "author": "Alain Deschenes <arianesoftinc@gmail.com>",
   "license": "MIT"
 }

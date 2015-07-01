@@ -1,10 +1,7 @@
 plugins:
   "york-flex": true
-  "york-default-theme": true
   "york-behaviors": true
+  "york-terminal": true
   "york-text": true
-  "york-checkbox": true
-  "york-button": true
-  "york-icon": true
-  "york-list": true
+  "york-window": true
   "york-desktop": true
